@@ -1,0 +1,72 @@
+<div class="card-text">
+  <div class="stepper-creation-section">
+    <form [formGroup]="formGroup">
+      <mat-horizontal-stepper class="stepper-creation-color" #stepper [linear]="isLinear">
+        <mat-step [completed]="step1Completed">
+          <form [formGroup]="createCampaignFormGroup" #campaignCreateForm="ngForm" (ngSubmit)="onCampaignCreate(campaignCreateForm,stepper)">
+            <ng-template matStepLabel>Create Campaign</ng-template>
+            <h2 class="text-center head-section-title">Create your campaign</h2>
+            <div class="form-group">
+              <mat-form-field>
+                <input matInput placeholder="Campaign Name" formControlName="campaign_name" maxlength="160">
+                <span class="information-tooltip" matTooltip="This is only for your reference,not visible to recipient." matTooltipPosition="above">  <i class="fa fa-info-circle fa-stack"></i></span>
+              </mat-form-field>
+            </div>
+            <div class="form-group">
+              <mat-form-field>
+                <input matInput placeholder="Subject" formControlName="subject">
+                <span class="information-tooltip" matTooltip="This is visible to recipient." matTooltipPosition="above">  <i class="fa fa-info-circle fa-stack"></i></span>
+              </mat-form-field>
+            </div>
+            <div class="form-group">
+              <mat-form-field>
+                <input matInput placeholder="From Email" formControlName="from_email" readonly>
+              </mat-form-field>
+            </div>
+            <div class="form-group">
+              <mat-form-field>
+                <input matInput placeholder="From Name" formControlName="from_name" readonly>
+              </mat-form-field>
+            </div>
+            <div class="form-group">
+              <mat-form-field>
+                <input matInput placeholder="Reply To" formControlName="reply_to" readonly>
+              </mat-form-field>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="mycampaign-creation-next">
+                  <button type="submit" class="btn btn-primary">Next</button>
+                </div>
+              </div>
+            </div>
+          </form>
+        </mat-step>
+        <mat-step [completed]="step2Completed">
+          <ng-template matStepLabel>Add Contacts</ng-template>
+          <div class="stepper-tabs">
+            <app-addcontacts (stepperEvent)="stepperChange($event)"></app-addcontacts>
+          </div>
+        </mat-step>
+
+        <mat-step [completed]="step3Completed">
+          <ng-template matStepLabel>News Letter</ng-template>
+          <div class="stepper-tabs">
+            <app-editor (stepperEvent)="stepperChange($event)"></app-editor>
+            <!-- <app-createtemplate (stepperEvent)="stepperChange($event)"></app-createtemplate> -->
+          </div>
+        </mat-step>
+        <mat-step [completed]="step4Completed">
+          <ng-template matStepLabel>Send</ng-template>
+          <div class="stepper-tabs">
+            <app-preview (stepperEvent)="stepperChange($event)"></app-preview>
+          </div>
+          <!-- <div>
+            <button mat-button matStepperPrevious>Back</button>
+          </div> -->
+        </mat-step>
+      </mat-horizontal-stepper>
+    </form>
+  </div>
+</div>
+<!-- <button mat-raised-button (click)="isLinear = true" id="toggle-linear">Enable linear mode</button> -->

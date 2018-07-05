@@ -1,0 +1,185 @@
+@import 'variables';
+@import 'button';
+
+section{
+  .preview-box-text{
+  }
+  .test-mail-span{
+    display: flex;
+    input{
+      margin-right: 15px;
+      margin-top: 20px;
+      height: 27px;
+    }
+    .send-test-mail{
+      i{
+        margin-top: 20px;
+        font-size: 25px;
+        color: $primary-button-hover-color;
+      }
+    }
+  }
+	.preview-box{
+		height: 70px;
+    width: 100%;
+    background-color: $button-second-color;
+    display: flex;
+    margin-bottom: 15px;
+    padding: 5px 15px;
+    color: $primary-color;
+    .row{
+      width: 100%;
+      .preview-data-col{
+        height: 100%;
+        .preview-box-link{
+          float: right;
+          height: 100%;
+          justify-content: center;
+          align-items: center;
+          display: flex;
+          a{
+            color: $anchor-link-color;
+            font-size: 16px;
+          }
+        }
+      }
+    }
+    .preview-box-text{
+      font-size: 18px;
+      font-weight: bold;
+    }
+    .preview-box-text-data{
+        color: $secondary-color;
+        font-size: 18px;
+        font-weight: 100;
+        margin-right: 25px;
+      }
+  }
+  .contact-data{
+    padding: 15px;
+    margin-bottom: 10px;
+    .contacts-list{
+      display: flex;
+      .preview-box-text{
+        color: $primary-color;
+        font-size: 20px;
+        font-weight: 500;
+        margin-right: 25px;
+      }
+      .preview-box-count{
+        font-size: 16px;
+        margin-top: 22px;
+      }
+    }
+    .contact-list-data-name{
+      display: inline-flex;
+      .btn-special{
+        font-size: 16px;
+        margin: 10px 15px 10px 0;
+        min-width: 100px;
+        &:hover, &:focus, &:visited, &:active{
+          border: 1px solid $second-buton-border;
+        }
+      }
+    }
+  }
+  .preview-test-mail-data{
+    margin-bottom: 20px;
+    .fa{
+      cursor: pointer;
+      margin-left: 20px;
+      font-size: 20px;
+      &:hover{
+        color: $primary-color;
+      }
+    }
+    input{
+      height: 40px;
+    }
+  }
+  .preview-attachments-list-card{
+    color: black;
+    padding: 10px;
+    min-height: 34px;
+    border: 1px solid #eaeaea;
+    margin-bottom: 15px;
+    width: 100%;
+    .preview-attachments-list{
+      display: flex;
+      width: 100%;
+      .fa-paperclip{
+        font-size: 15px;
+        color: green;
+        margin-right: 15px;
+      }
+      a{
+        width:80%;
+      }
+      .fa-trash{
+        font-size: 15px;
+        color: red;
+        margin-left: 15px;
+      }
+    }
+  }
+  .modal-content{
+    padding: 15px;
+    .preview-file-upload{
+      min-height: 100px;
+      background-color: transparent;
+      border-radius: 5px;
+      border: 2px dashed $input-border-color;
+      justify-content: center;
+      align-items: center;
+      display: flex;
+      background-color: $button-second-color;
+      label{
+        padding: 10px;
+        // background: #ffffff; 
+        display: table;
+        color: $primary-color;
+      }
+      ::ng-deep ng2-file-input{
+        input[type="file"] {
+          display: none;
+        }
+        .btn-primary{
+          background-color: transparent;
+          border: none;
+          color: $secondary-color;
+          font-weight: bold;
+        }
+        .ng2-file-input-files{
+          justify-content: center;
+          align-items: center;
+          display: flex;
+          .ng2-file-input-file{
+            display: inline-flex;
+            margin-top: 5px;
+            .ng2-file-input-file-text{
+                // justify-content:center;
+                // align-items: center;
+                // display: flex;
+            }
+            img{
+              display: none;
+            }
+            .remove{
+              // margin-top: 8px;
+              margin-left: 15px;
+              color: $unsubscribed-color;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+.backdrop{ 
+  background-color:rgba(0,0,0,0.6);
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100vh;
+}

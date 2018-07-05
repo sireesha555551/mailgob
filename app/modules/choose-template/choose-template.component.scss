@@ -1,0 +1,57 @@
+@import 'variables';
+@import 'button';
+@import 'common';
+.mycampaign-creation-section {
+  margin-bottom: 15px;
+  .mycampaign-creation-card{
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    .card{
+      width: 250px;
+      min-height: 300px;
+      border-radius: 10px;
+      background-color: $table-background-color;
+      border: solid 1px $sidenav-color;
+      @include desktop{
+        width: 250px;
+      }
+      @include largeScreen{
+        width: 330px;
+      }
+    }
+    .mycampaign-card-heading{
+      background-color: $sidenav-color;
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+      min-height: 60px;
+      .mycampaign-card-type{
+        color: $white-color;
+        text-align: center;
+        padding: 15px 5px;
+        margin-top: 0px;  
+        margin-bottom: 0;
+      }
+    }
+    .mycampaign-creation-icon{
+      text-align: center;
+      padding-top: 15px;
+    }
+    .card-body  {
+      .card-text{
+        text-align: center;
+        font-size: 20px;
+        padding: 25px;
+        padding-bottom: 0px;
+      }
+      .mycampaign-creation-button{
+        text-align: center;
+        margin-bottom: 20px;
+        margin-top: 25px;
+        .btn-primary{
+          width: 200px;
+        }
+      }
+    }
+  }
+}

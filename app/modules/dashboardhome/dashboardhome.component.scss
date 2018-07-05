@@ -1,0 +1,226 @@
+@import 'variables';
+@import 'button';
+@import 'common';
+@import 'dropdown';
+
+.dashboard-section {
+	.dashboard-section-desc{
+		font-size: 16px;
+    	width: 60%;
+    	margin: 0 auto;
+    	margin-bottom: 15px;
+	}
+	.dashboard-chart-secton{
+		border-right : 1px solid $button-second-color;
+		.dashboard-header {
+			.dashboard-header-title {
+				font-size: 18px;
+				color: $primary-color;
+				text-align: left;
+			}
+		}
+		.dashboard-search{
+			.search-box-data{
+				position: absolute;
+				top: 49px;
+				width: 90%;
+				height: 100px;
+				border-radius: 4px;
+				background-color: $white-color;
+				z-index: 9999;
+				overflow-y: scroll;
+				border: 1px solid $input-border-color;
+				.searchbox-campaign{
+					color: $secondary-color;
+					text-decoration: none;
+					&:hover {
+						cursor:pointer;
+						text-decoration: none;
+
+					}	
+				}
+			}
+		}
+		.dashboard-graph-types{
+			.graphtypes-text{
+				font-size: 14px;
+				align-items: center;
+   				display: flex;
+			}
+			.fa-circle{
+				font-size: 6px;
+				margin-right: 10px;
+			}
+			.fa-delivered{
+				color: $delivered-color;
+			}
+			.fa-bounced{
+				color: $bounced-color;
+			}
+			.fa-opened{
+				color: $tracked-color;
+			}
+			.fa-unsub{
+				color: $unsubscribed-color;
+			}
+		}
+		.dashboard-graphs-data{
+			ul{
+				border-bottom: none;
+				li.active{ 
+					margin-bottom: 10px;
+					border: none;
+					border-bottom: 2px solid $delivered-color;
+					a{
+						color: #4ed8da;
+						border: none;
+						&:hover {
+							background-color:none;
+							color: $delivered-color;
+						}
+					}
+					&:hover {
+						background-color: none;
+						a{
+							color: $delivered-color;
+							background-color: none;
+							border: none;
+						}
+					}
+				}
+				li {
+					&:hover {
+						background-color: none;
+						a {	
+							color: $tab-color;
+							border:none;
+							background-color:none;
+							&:hover {
+								background-color:none;
+								color: $tab-color;
+							}
+						}
+					}
+					a {	
+						color: $tab-color;
+						border:none;
+						&:hover {
+							background-color:none;
+							color: $tab-color;
+						}
+					}
+				}
+			}
+			.tab-content{
+				min-height: 350px;
+				img{
+					margin: 0 auto;
+				}
+			}
+		}
+		.dashboard-graphs-head{
+			border-bottom: 1px solid $table-border-color;
+			margin-bottom: 25px;
+			.dashboard-graphs-latest-title{
+				font-size: 20px;
+				font-weight: 300;
+				text-align: left;
+				color: $primary-text-color;
+			}
+			.dropdown-right{
+				margin-top: 10px;
+				float: right !important;
+			 .dropdown-toggle{
+				font-size: 16px;
+				text-align: right;
+				color: $primary-text-color;
+				padding:0 20px;
+			  }
+			}
+		}
+		.dashboard-graphs-row{
+			text-align: center;
+			.dashboard-graph-col{
+				margin-left: 15px;
+				margin-bottom: 1em;
+				.dashboard-graphs-types{
+					font-size: 12px;
+					color: $primary-color;
+					margin-top: 10px;
+					.fa-circle{
+						font-size: 6px;
+						margin-right: 10px;
+					}
+					.fa-delivered{
+						color: $delivered-color;
+					}
+					.fa-bounced{
+						color: $bounced-color;
+					}
+					.fa-opened{
+						color: $tracked-color;
+					}
+					.fa-unsub{
+						color: $unsubscribed-color;
+					}
+					.fa-sent{
+						color: $sent-color;
+					}
+				}
+			}
+		}
+		#donut-percentage{
+			position: absolute;
+			left: 0;
+			top:0;
+			height: 100%;
+			width: 100%;
+			font-size: 18px;
+			line-height: 175px;
+			text-align: center;
+			top:5px;
+			font-weight: bold;
+		}
+		#donut-mails{
+			position: absolute;
+			left: 0;
+			top:15px;
+			height: 100%;
+			width: 100%;
+			line-height: 190px;
+			font-size: 12px;
+			text-align: center;	
+		}
+	}
+
+	.dashboard-data-section{
+		.dashboard-all-data-stats{
+			.dashboad-all-data{
+				margin-bottom:15px;
+				.data-stats-details{
+					color: $delivered-color;
+					display: inline-flex;
+					font-size: 20px; 
+					.fa{
+						padding: 5px;
+    					margin-right: 10px;
+					}
+				}
+				.data-stats-title{
+					font-size: 12px;
+					color: $input-border-color;
+					margin-left: 35px;
+				}
+				.data-stats-image{
+					width: 150px;
+					height: 50px;
+				}
+			}
+		}
+	}
+	.create-campaign-button{
+		.btn{
+			font-size: 16px;
+		}
+	}
+}

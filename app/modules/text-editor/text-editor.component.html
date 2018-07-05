@@ -1,0 +1,36 @@
+<div class="text-editor-section">
+  
+  <!-- <app-alerts></app-alerts>  -->
+<!-- <ckeditor [(ngModel)]="content" 
+    (click)="openImageExplorer($event)"
+    debounce="500">
+  <p>Hello <strong>world</strong></p>
+</ckeditor> -->
+<!-- <form role="form" [formGroup]="savePostForm" (ngSubmit)="savePost($event)">     -->
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="form-group">
+        <textarea id="summernote" class="form-control summernote" [(ngModel)]="content" rows="3"></textarea>
+      </div>
+    </div>
+  </div>
+  <!-- <button type="submit" class="btn btn-primary" >Submit</button> -->
+  <!-- </form> -->
+  <div class="row m-t-1">
+    <div class="col-sm-2">
+      <div class="createtemplate-savedraft">
+        <button type="button" class="btn btn-primary" (click)="saveAsDraft($event)">Save Draft</button>
+      </div>
+    </div>
+    <div class="col-sm-2">
+      <div class="createtemplate-cancel">
+        <button type="button" class="btn btn-secondary" (click)="sendAsCancel($event)">Cancel</button>
+      </div>
+    </div>
+    <div class="col-sm-8 text-right">
+     <div class="createtemplate-send">
+      <button type="button" class="btn btn-primary" (click)="sendAsEvent($event)">Next</button>
+    </div>
+  </div>
+</div>
+</div>

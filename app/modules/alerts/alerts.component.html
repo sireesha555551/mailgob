@@ -1,0 +1,43 @@
+<div class="alerts">
+	<div *ngIf="isAlert.value" [ngStyle]="{'display':display}">
+		<div class="row" *ngIf="!isError">
+			<!-- <div class="alert alert-success" role="alert" *ngFor="let success of success_alerts">
+				{{success.message}}
+			</div> -->
+			<!-- <div class="alerts-model-background">
+				<div class="alerts-model-card">
+					<div class="card" role="alert" *ngFor="let success of success_alerts">
+						<img src="assets\images\icon.png">
+						<p>{{success.message}}</p>
+					</div>
+				</div>
+			</div> -->
+			<div class="alerts-success-message">
+				<div class="col-sm-4 col-sm-offset-4">
+					<div class="card" role="alert" *ngFor="let success of success_alerts">
+						<span>
+							<img src="assets\images\alrt.png">
+							<p>{{success.message}}</p>
+						</span>
+						<div class="alerts-success-message-border">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row" *ngIf="isError">
+			<div class="alerts-error-message">
+				<div class="col-sm-4 col-sm-offset-4">
+					<div class="card" role="alert" *ngFor="let error of error_alerts">
+						<span>
+							<img src="assets\images\error.png">
+							<p>{{error.message}}</p>
+						</span>
+						<div class="alerts-error-message-border">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,78 @@
+@import 'variables';
+@import 'common';
+
+
+// button classes
+.btn{
+	border-radius: 5px;	
+	min-width: 120px;
+	color: $button-text-color;
+	&:hover, &:active,&:visited,&:focus{
+		outline: none;
+	}
+}
+
+.btn-primary{
+	background-color: $white-color;
+	border: solid 1px $primary-button-hover-color;
+	font-size: 16px;
+	&:hover{
+		background-color: $primary-button-hover-color;
+		border: 1px solid $button-border-color;
+		color: $white-color; 
+	} 
+	&:active, &:focus, &:visited {
+		border: solid 1px $primary-button-hover-color;
+	}
+}
+
+.btn-secondary{
+	background-color: $button-second-color;
+	border: solid 1px $second-buton-border;
+	font-size: 16px;
+	color: $button-text-color;
+	&:hover{
+		border: solid 1px $primary-button-hover-color;
+	}
+}
+
+.btn-sm{
+	padding: 0;
+
+}
+
+.btn-view{
+	
+}
+
+.pull-right{
+	float: right;
+}
+
+.btn-secondary{
+	background-color: $button-second-color;
+	border: solid 1px $second-buton-border;
+	font-size: 16px;
+	color: $button-text-color;
+}
+
+.btn-alternate{
+	background-color: $primary-button-hover-color;
+	color: $white-color;
+	font-size: 16px;
+	border: solid 1px $primary-button-hover-color;
+	&:hover{
+		background-color: $primary-button-hover-color;
+		border: 1px solid $button-border-color;
+		color: $white-color; 
+	}
+
+}
+
+.btn-sm{
+	padding: 0;
+}
+
+.pull-right{
+	float: right;
+}

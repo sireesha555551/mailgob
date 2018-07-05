@@ -1,0 +1,63 @@
+@import 'variables';
+@import 'common';
+.alerts{
+  .alerts-success-message{
+    .card{
+      background-color: $white-color;
+      box-shadow: 0px 3px 20px 0 rgba(120, 120, 120, 0.5);
+      text-align: center;
+      color: $alert-success-color;
+      min-height: 60px;
+      padding-top: 15px;
+      span{
+        display: inline-flex;
+        width: 100%;
+        img{
+          width: 30px;
+          height: 30px;
+          margin-right: 20px;
+          margin-left: 10px;
+        }
+        p{
+          width: calc(100% - 30px);
+          font-size: 16px;
+          padding-top: 7px;
+          // text-align: center;
+        }
+      }
+      .alerts-success-message-border{
+        border-bottom:solid 3px $alert-success-color;
+        padding-top: 3px;
+      } 
+    }
+  }
+  .alerts-error-message{
+    .card{
+      // background-color: #ff5b5f;
+      background-color: $white-color;
+      box-shadow: 0px 3px 20px 0 rgba(120, 120, 120, 0.5);
+      text-align: center;
+      color: $alert-error-color;;
+      min-height: 60px;
+      padding-top: 15px;
+      span{
+        display: inline-flex;
+        width: 100%;
+        img{
+          width: 30px;
+          height: 30px;
+          margin-left: 10px;
+        }
+        p{
+          font-size: 16px;
+          padding-top: 7px;
+          margin: 0 auto;
+        }
+      }
+      .alerts-error-message-border{
+        border-bottom:solid 3px $alert-error-color;
+        padding-top: 7px;
+      }
+    }
+  }
+}

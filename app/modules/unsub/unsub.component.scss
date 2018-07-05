@@ -1,0 +1,80 @@
+/*unsubscribe section*/
+.unsubscribe-background-color{
+	height: 434px;
+	background-color: #4ed8da;
+}
+.unsubscribe-content h1{
+	padding-top:10%;
+	color: #ffffff;
+	font-size: 32px;
+}
+.unsubscribe-content p{
+	color: #ffffff;
+}
+.unsubscribe-content img{
+	float: right;
+	margin-top: -10%;
+}
+.card{
+	width:40%;
+	height:400px;
+	border-radius: 10px;
+	background-color: #fefefe;
+	box-shadow: 0 0 20px 0 rgba(62, 62, 62, 0.5);
+	position: absolute;
+	top:37%;
+	left: 10%;
+	.unsub-message{
+		margin-top: 2em;
+	}
+}
+.unsubscribe-comment textarea{
+	width:80%;
+	height: 106px;
+	border: solid 1px #a9a9a9;
+	margin-top: 70px;
+}
+.unsubscribe-comment textarea:focus{
+	outline: 0;
+}
+.unsubscribe-comment p{
+	color: #414141;
+	padding-top:20px;
+}
+.unsubscribe-comment button{
+	width: 200px;
+	height: 50px;
+	background-color: #ffffff;
+	border-radius: 5px;
+	border: solid 1px #a9a9a9;
+	color: #a1a1a1;
+	margin-top:50px;
+
+}
+.unsubscribe-comment button:focus{
+	outline: none;
+}
+.unsubscribe-div-card{
+	height:300px;
+}
+@media screen and (max-width: 767px){
+	.unsubscribe-content img{
+		float: left;
+		margin-top: 20px;
+		width: 50%;
+	}
+	.card{
+		width: 80%;
+		height: 450px;
+		margin-top: 30%;
+	}
+	.unsubscribe-div-card{
+		height:300px;
+	}
+	.unsubscribe-content{
+		margin-top: 20%;
+	}
+	.unsubscribe-comment button{
+		margin-top: 60px;
+	}
+}

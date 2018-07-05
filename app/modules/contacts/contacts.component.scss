@@ -1,0 +1,345 @@
+@import 'variables';
+@import 'button';
+@import 'table';
+@import 'dropdown';
+
+.contacts-creation-section {
+  padding: 0 30px;
+  .contacts-creation-header {
+    h2 {
+      text-align: center;
+    }
+    p {
+      text-align: center;
+      font-size: 16px;
+    }
+  } 
+  .progress {
+    height: 8px;
+    .one {
+      position: absolute;
+      margin-top: -10px;
+      z-index: 1;
+      height: 30px;
+      width: 30px;
+      border-radius: 25px;
+    }
+    .one {
+    }
+    .primary-color {
+      background-color: #b139df;
+    }
+    .progress-bar {
+      background-color: #b139df;
+    } 
+  }
+  .contact-filter{
+    display: flex;
+    .filter-image{
+      margin-right: 15px;
+    }
+    mat-form-field{
+      width: 100px;
+      ::ng-deep.mat-form-field-infix{
+        border-top-width: 0;
+      }
+    }
+  }
+  .contacts-creation-search {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    .form-control {
+      width: 400px;
+    }
+  }
+  .progressbar-data{
+    position: relative;
+  }
+  .btn-turtle {
+    font-size: 16px;
+  }
+  .table-heading-row{
+    // min-height: 350px;
+    .contacts-list-table {
+      td,
+      th {
+        padding: 8px;
+        font-size: 16px;
+      }
+      
+      .contacts-list-table-heading {
+        .contacts-list-table-heading-title {
+          font-size: 16px;
+          border-bottom: solid 1px $input-border-color;
+        }
+      }
+      .contact-list-name-heading{
+        text-align: left;
+      }
+      .contacts-select-tr{
+        td{
+          border-top: none;
+        }
+        .contacts-select-All {
+          font-size: 16px;
+          color: #717171;
+          border: none;
+          width: 30%;
+          padding: 0;
+          .contacts-name-input-span{
+            padding: 0px 30px;
+            align-items: center;
+            justify-content: center;
+            display: inline-flex;
+            span{
+              display: inline-flex;
+            }
+            input{
+              margin-top: 0;
+            }
+            label{
+              font-size: 16px;
+              margin-bottom: 0;
+              margin-left: 15px;
+              font-weight: 200;
+            }
+            .delete-text{
+              font-size: 16px;
+              color: #717171;
+            }
+          }
+        }
+        .contacts-table-info-text{
+          padding: 0;
+          border-top: none;
+          font-size: 12px;
+          color: $input-border-color;
+        }
+        
+      }
+      .information-tooltip{
+        color:white;
+      }
+      .contacts-name {
+        text-align: left;
+        .contacts-name-input-span{
+          padding: 10px 20px;
+          align-items: center;
+          justify-content: center;
+          display: inline-flex;
+          input{
+            margin-top: 0;
+          }
+          label{
+            font-size: 18px;
+            color: $secondary-color;
+            margin-bottom: 0;
+            margin-left: 15px;
+            font-weight: 200;
+          }
+        }
+      }
+      .contacts-table-border {
+        height: 40px;
+        border-radius: 20px;
+        background-color: $table-background-color;
+        padding-left: 30px;
+      }
+      .contacts-date {
+        font-size: 16px;
+      }
+      .contacts-header-contact {
+        font-size: 16px;
+        text-align: left;
+      }
+      select {
+        border: none;
+        background-color: $white-color;
+        font-size: 16px;
+      }
+      .opacity {
+        opacity: 0.2;
+      }
+    }
+    .contact-less-data{
+      justify-content:center;
+      align-items: cener;
+      display: flex;
+      margin-top: 5em;
+    }
+  }
+  .pagination>li>a,
+  .pagination>li>span {
+    border-radius: 50% !important;
+    margin: 0 5px;
+    border: none; 
+  }
+  .pagination {
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    .fa-arrow-left {
+      color: #d8d8d8;
+      font-size: 18px;
+    }
+    .fa-arrow-right {
+      color: #d8d8d8;
+      font-size: 18px;
+    }
+  }
+}
+.bd-view-stats-model{
+  .modal-header{
+    span{
+      display: flex;
+      p{
+        margin-left: 15px;
+      }
+    }
+  }
+  table {
+    border-collapse: collapse;
+    td, th {
+      border: 1px solid $button-second-color;
+      text-align: left;
+      padding: 0px;
+    }
+  }
+  .btn-sm{
+    font-size:16px;
+    height: 40px;
+  }
+}
+.modal-dialog{
+  margin-top: 5em;
+  .modal-content{
+    padding: 20px;
+  }
+}
+.bd-example-modal-md{
+  .modal-content{
+    .add-contacts-dropzone{
+      min-height: 100px;
+      background-color: transparent;
+      border-radius: 5px;
+      border: 2px dashed $input-border-color;
+      justify-content: center;
+      align-items: center;
+      display: flex;
+      background-color: $button-second-color;
+      label{
+        padding: 10px;
+        // background: #ffffff; 
+        display: table;
+        color: $primary-color;
+      }
+      ::ng-deep ng2-file-input{
+        input[type="file"] {
+          display: none;
+        }
+        .btn-primary{
+          background-color: transparent;
+          border: none;
+          color: $secondary-color;
+          font-weight: bold;
+        }
+        .ng2-file-input-files{
+          justify-content: center;
+          align-items: center;
+          display: flex;
+          .ng2-file-input-file{
+            display: inline-flex;
+            margin-top: 5px;
+            .ng2-file-input-file-text{
+                // justify-content:center;
+                // align-items: center;
+                // display: flex;
+            }
+            .remove{
+              // margin-top: 8px;
+              margin-left: 15px;
+              color: $unsubscribed-color;
+            }
+          }
+        }
+      }
+      span{
+        position: absolute;
+        margin-top: 25px;  
+      }
+    }
+    .terms-accepted{
+      display: inline-flex;
+      input{
+        margin-right: 15px;
+      }
+    }
+    .sample-download{
+      float: right;
+      font-size: 16px;
+      color: $primary-color;;
+    }
+    .file-types{
+      color: $input-border-color;
+    }
+    .email-exist-link{
+      float: left;
+       color: $input-border-color;
+       margin-top: 10px;
+    }
+  }
+}
+.tooltip {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted black;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+}
+.dropdown-toggle{
+  text-align: left;
+  padding: 0;
+}
+.dropdown-menu:after {
+  right: 75%;
+  top: -15px;
+}
+.dropdown-menu{
+  width: 150px;
+  min-height: 30px;
+}
+
+ .bd-downloads-model{
+    .modal-header{
+      padding: 0;
+      h4{
+        color: $select-color;
+      }
+    }
+    .image-link{
+      text-decoration: none;
+    }
+    .contacts-download-link{
+      color: $select-color;
+      font-size: 18px;
+    }
+ }
+
+

@@ -1,0 +1,27 @@
+@import 'variables';
+@import 'button';
+
+.text-editor-section{
+	width:  600px;
+	margin: 0 auto;
+	 @include desktop{
+        width: 800px;
+      }
+      @include largeScreen{
+        width: 1000px;
+      }
+	::ng-deep div.note-frame {
+		.note-editable{
+			height: 300px;
+		}
+	}
+}
+ckeditor{
+	#cke_editor1{
+		display: none !important;
+
+		background-color: red !important;
+	}
+	}.cke_toolgroup{
+}
+

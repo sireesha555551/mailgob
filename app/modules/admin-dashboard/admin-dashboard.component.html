@@ -1,0 +1,58 @@
+<div class="admin-dashboard-section">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12">
+				<h3>Welcome Admin Dashboard</h3>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-12">
+				<table class="table table-responsive campaigns-table">
+					<tr class="table-heading">
+						<th class="table-heading-titles table-heading-name">Email</th>
+						<th class="table-heading-titles">Name</th>
+						<th class="table-heading-titles">Company</th>
+						<th class="table-heading-titles">
+							Created Date
+						</th>
+						<!-- <th class="table-heading-titles">Delivered</th> -->
+						<th class="table-heading-titles">Status</th>
+						<th class="table-heading-titles">Action</th> 
+					</tr>
+					<tr class="table-body" *ngFor="let user of usersList  | paginate : { itemsPerPage:10, 		currentPage:page, id : 1, totalItems: totalItems }">
+						<td class="campaign-name">{{user.email}}</td>
+						<td class="campaign-date">{{user.first_name}}</td>
+						<td class="campaign-header-contact">{{user.company_name}}</td>
+						<td class="campaign-date">{{user.created_at}}</td>
+						<!-- <td class="campaign-header-contact">{{campaign.delivered}}</td> -->
+						<!-- <td class="campaign-header-contact">209</td> -->
+						<td class="campaign-header-contact sent">{{user.status}}</td>
+						<td class="table-dropdown">
+							<div class="dropdown">
+								<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Options
+									<span class="caret"></span>
+								</button>
+								<ul class="dropdown-menu">
+									<li><a (click)="onViewClick(user)">View</a></li>
+								</ul>
+							</div>
+						</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+		<div class="row" *ngIf="isPageLoaded">
+    		<div class="col-sm-12 text-center">
+	    		<ul class="pagination">
+	      			<pagination-controls 
+	        		(pageChange) = "page = getServerData($event)" 
+	        		id="1"
+	        		maxSize = "10"
+	        		directionLinks = "true"
+	        		autohide = "true">
+	      			</pagination-controls>
+	    		</ul>
+    		</div>
+		</div>
+	<div>
+</div>

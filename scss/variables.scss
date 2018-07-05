@@ -1,0 +1,148 @@
+$font-stack:    Helvetica;
+
+// text colors
+$primary-color: #00264b;
+$primary-text-color: #4e4e4e; // button primary color
+$secondary-color: #000000;
+$white-color: #ffffff; 
+$input-border-color: #cccccc;
+$anchor-link-color: #a9a9a9;
+$tab-color: #232425;
+$sidenav-hover-color: #002d46;
+$dropdown-border: #074465;
+$sidenav-color: #002234;
+
+//button-colors
+$button-text-color: #3a3a3a;
+$primary-button-hover-color: #F14F24;
+$second-buton-border:#cdcdcd;
+$button-border-color:  #ff0056;
+$button-second-color: #eaeaea;
+// graph colors
+$delivered-color: #11DEDB;
+$bounced-color: #A600FF;
+$tracked-color: #ff8700;
+$unsubscribed-color: #ff0606;
+$div-bg-color: #f9f9f9;
+$sent-color: #00E21B;
+
+//table colors
+$table-border-color: #dddddd;
+$table-span-color:#4ed8da;
+$draft-color:#3879db;
+$table-background-color: #f4f4f4;
+$input-placeholder-text: #c3c3c3;
+$dropdown-title-color: #d8d8d8;
+
+
+$select-color: #717171;
+//help page extra colors 
+$help-color-one: #4e9ada;
+$help-color-two: #f5d765;
+//alerts colors
+$alert-success-color: #03cc7b;
+$alert-error-color: #ff5b5f;
+
+
+//different screens 
+$tablet-width: 768px;
+$desktop-width: 1024px;
+$large-screen-width: 1920px;
+
+@mixin tablet {
+  @media (min-width: #{$tablet-width}) and (max-width: #{$desktop-width - 1px}) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: #{$desktop-width}) and (max-width: #{$large-screen-width - 1px}) {
+    @content;
+  }
+}
+
+@mixin largeScreen {
+	@media (min-width: #{$large-screen-width}){
+    	@content;
+  	}
+}
+@mixin retina {
+  @media
+    only screen and (-webkit-min-device-pixel-ratio: 2),
+    only screen and (min--moz-device-pixel-ratio: 2),
+    only screen and (-o-min-device-pixel-ratio: 2/1),
+    only screen and (min-device-pixel-ratio: 2),
+    only screen and (min-resolution: 192dpi),
+    only screen and (min-resolution: 2dppx) {
+    @content;
+  }
+}
+
+@mixin print {
+  @media print {
+    @content;
+  }
+}
+// anchor tag colors
+a{
+	font-size: 14px;
+	color: $secondary-color;
+	&:hover {
+		cursor:pointer;
+	}
+}
+
+h1{
+	font-size: 24px;
+	font-weight: 300;
+	font-color: $primary-color;
+}
+// input styles
+input{
+	border-radius: 4px;
+	// background-color: $white-color;
+	border: solid 1px $input-border-color;
+
+}
+input[type="checkbox"]{
+	width: 15px !important; /*Desired width*/
+	height: 20px; /*Desired height*/
+}
+
+::-webkit-input-placeholder {
+	text-align: center;
+	color: $input-placeholder-text;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+	text-align: center;  
+	color: $input-placeholder-text;
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+	text-align: center;  
+	color: $input-placeholder-text;
+}
+
+:-ms-input-placeholder {  
+	text-align: center; 
+	color: $input-placeholder-text;
+}
+
+
+input[type="file"]{
+	display: none;
+	// font-size: 20px;
+	// cursor: pointer;
+	// border: none;
+}
+
+input:-moz-read-only { /* For Firefox */
+	// background-color: $button-second-color;
+	color: $anchor-link-color;
+}
+
+input:read-only { 
+	// background-color: $button-second-color;
+	color: $anchor-link-color;
+}

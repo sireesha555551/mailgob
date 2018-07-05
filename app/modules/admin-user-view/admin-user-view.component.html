@@ -1,0 +1,55 @@
+<div class="admin-user-campaignsdata">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12">
+				<h2>Campaign and Contacts Info</h2>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-2">
+				<div class="well">
+					<h4>No of Unique Contacts: </h4>
+					<h4>{{ totalContacts }}</h4>
+				</div>
+				<div class="well">
+					<h4>No of Campaigns:</h4>
+					<h4>{{ totalCampaigns }}</h4>
+				</div>
+			</div>
+			<div class="col-sm-10">
+				<table class="table table-responsive campaigns-table">
+					<tr class="table-heading">
+						<th class="table-heading-titles table-heading-name">Campaign Name</th>
+						<th class="table-heading-titles">Created On</th>
+						<th class="table-heading-titles">Sent</th>
+						<!-- <th class="table-heading-titles">Delivered</th> -->
+						<th class="table-heading-titles">Delivered</th>
+						<th class="table-heading-titles">Status</th> 
+					</tr>
+					<tr class="table-body" *ngFor="let campaign of  campaigns | paginate : { itemsPerPage:10, 		currentPage:page, id : 1, totalItems: totalCampaigns }">
+						<td class="campaign-name">{{campaign.name}}</td>
+						<td class="campaign-date">{{campaign.created_on}}</td>
+						<td class="campaign-header-contact">{{campaign.sent}}</td>
+						<!-- <td class="campaign-header-contact">{{campaign.delivered}}</td> -->
+						<!-- <td class="campaign-header-contact">209</td> -->
+						<td class="campaign-header-contact sent">{{campaign.delivered}}</td>
+						<td>{{campaign.status}}</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+		<div class="row" *ngIf="isPageLoaded">
+			<div class="col-sm-12 text-center">
+	    		<ul class="pagination">
+	      			<pagination-controls 
+	        		(pageChange) = "page = getServerData($event)" 
+	        		id="1"
+	        		maxSize = "10"
+	        		directionLinks = "true"
+	        		autohide = "true">
+	      			</pagination-controls>
+	    		</ul>
+    		</div>
+		</div>
+	</div>
+</div>

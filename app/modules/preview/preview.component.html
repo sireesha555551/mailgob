@@ -1,0 +1,189 @@
+<section class="preview">
+	<div class="container-fluid">
+		<!-- <app-alerts></app-alerts> -->
+		<div class="row">
+			<div class="col-sm-8">
+				<h3 class="preview-box-text">Summary</h3>
+			</div>
+			<!-- <div class="col-sm-6"> -->
+			<div class="col-sm-4">
+				<span class="test-mail-span">
+					<input type="text" placeholder="Send test mail" class="test-email form-control" [(ngModel)]="testEmail" readonly>
+					<a class="send-test-mail">
+						<i class="fa fa-share-square" (click)="onTestMailClick($event,testEmail)"></i>
+					</a>
+				</span>
+			</div>
+			<!-- <div class="col-sm-1"> -->
+				<!-- <button class="btn btn-primary btn-sm" (click)="onTestMailClick($event,testEmail)">Send email</button> -->
+			<!-- </div> -->
+			<!-- </div> -->
+		</div>
+		<div class="row">
+			<div class="col-sm-3 p-rl-10">
+				<div class="preview-box">
+					<h3 class="preview-box-text">Campaign Name</h3>				
+				</div>
+			</div>
+			<div class="col-sm-9 p-rl-10">
+				<div class="preview-box">
+					<div class="row">
+						<div class="col-sm-9 preview-data-col">
+							<h3 class="preview-box-text-data">
+								{{campaignData?.campaign_name}}
+							</h3>
+						</div>
+						<div class="col-sm-3 preview-data-col">
+							<span class="preview-box-link">
+								<a (click)="onCampaignDataEdit($event)" class="preview-box-link-text">Edit</a>
+							</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-3 p-rl-10">
+				<div class="preview-box">
+					<h3 class="preview-box-text">Subject</h3>
+				</div>
+			</div>
+			<div class="col-sm-9 p-rl-10">
+				<div class="preview-box">
+					<div class="row">
+						<div class="col-sm-9 preview-data-col">
+							<h3 class="preview-box-text-data">
+								{{campaignData?.subject}}
+							</h3>
+						</div>
+						<div class="col-sm-3 preview-data-col">
+							<span class="preview-box-link">
+								<a (click)="onCampaignDataEdit($event)" class="preview-box-link-text">Edit</a>
+							</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-3 p-rl-10">
+				<div class="preview-box">
+					<h3 class="preview-box-text">From</h3>				
+				</div>
+			</div>
+			<div class="col-sm-9 p-rl-10">
+				<div class="preview-box">
+					<div class="row">
+						<div class="col-sm-9 preview-data-col">
+							<h3 class="preview-box-text-data">
+								{{campaignData?.from_email}}
+							</h3>
+						</div>
+						<div class="col-sm-3 preview-data-col">
+							<span class="preview-box-link">
+								<a href="" class="preview-box-link-text hide">edit</a>
+							</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-3 p-rl-10">
+				<div class="preview-box">
+					<h3 class="preview-box-text">Template</h3>
+				</div>
+			</div>
+			<div class="col-sm-9 p-rl-10">
+				<div class="preview-box">
+					<div class="row">
+						<div class="col-sm-9 preview-data-col">
+							<h3 class="preview-box-text-data">
+								{{templateData?.tmpl_type}}
+							</h3>
+						</div>
+						<div class="col-sm-3 preview-data-col">
+							<span class="preview-box-link">
+								<a class="preview-box-link-text"></a>
+							</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="contact-data">
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="contacts-list">
+						<h3 class="preview-box-text">Selected List</h3> 
+						<h3 class="preview-box-count">
+							<i>
+								({{contactData?.length}} list selected)
+							</i>
+						</h3>
+					</div>
+				</div>
+				<div class="col-sm-12">
+					<div class="contacts-list-data" *ngIf = "contactData?.length">
+						<div class="contact-list-data-name" *ngFor="let contact of contactData">
+							<button class="btn btn-secondary btn-special btn-contacts">{{contact?.list_name}}</button>
+						</div> 
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="preview-test-mail-data">
+			<p>Attachments  <i class="fa fa-paperclip fa-2x" (click)="openModal($event)"></i>
+			</p>
+			<div class="row">
+				<div class="col-sm-4" *ngIf="attachments.length">
+					<div class="preview-attachments-list-card">
+						<span class="preview-attachments-list" *ngFor="let attach of attachments">
+							<i class="fa fa-paperclip"></i> 
+							<a class="">{{attach.filename}}</a>
+							<i class="fa fa-trash" (click)="onDeleteAttachment(attach.id,$event)"></i>
+						</span>
+					</div>
+				</div>
+			</div>
+		</div>	
+		<div class="row">
+			<div class="col-sm-2">
+				<button class="btn btn-primary pull-left" (click)="onSaveDraftClick($event)">Save Draft</button>
+			</div>
+			<!-- <div class="col-sm-2"> -->
+				<!-- <button class="btn btn-secondary pull-left">Cancel</button> -->
+			<!-- </div> -->
+			<div class="col-sm-3 col-sm-offset-7">
+				<button class="btn btn-primary pull-right" (click)="onSendClick($event)">Send</button>
+			</div>
+		</div>
+	</div>
+
+	<!-- file upload modal -->
+	<div class="backdrop" [ngStyle]="{'display':display}"></div>
+	<div class="modal fade in" id="exampleModal" tabindex="-1" [ngStyle]="{'display':display}" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" (click)="onCloseHandled($event)" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title text-center" id="exampleModalLabel">Upload file</h4>
+				</div>
+				<div class="modal-body">
+					<div class="form-group">
+						<label for="">File name</label>
+						<input type="text" class="form-control" [(ngModel)]="fileName">
+					</div>
+					<div class="preview-file-upload">
+						<ng2-file-input [id]="'CustomTextsJPGOnlyInput'" (onInvalidDenied)="onInvalidDenied($event)" [multiple]="false" (onRemoved)="onRemoved($event)" (onAdded)="onAdded($event)" (onAction)="onAction($event)" extensions="['jpg','jpeg', 'pdf','csv','xl', 'png']" [drop-text]="' '" [browse-text]="'Drop file here or click to upload'" [remove-text]="'x'"></ng2-file-input>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" (click)="onCloseHandled($event)" data-dismiss="modal">Close</button>
+					<button type="button" (click)= "onFileUploadClick($event)" class="btn btn-primary">Upload</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

@@ -1,0 +1,169 @@
+
+<div class="addcontacts-creation-section"> 
+  <!-- <app-alerts></app-alerts>  -->
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="addcontacts-importcontacts-button">
+        <h5>Want to import new list ? <a (click)="onAddContacts($event)">Click here</a></h5>
+        <!-- <button type="button" class="btn btn-primary"  (click)="openImportsModal($event)">
+          Import Contacts
+        </button> -->
+      </div>
+    </div>
+  </div>
+  <div class="add-contact-select-section">
+    <div class="add-contact-search-section"> 
+      <div class="row">
+        <div class="col-sm-3">
+          <div class="addcontact-selectall hide">
+            <div class="checkbox">
+              <span>
+                <input type="checkbox" value=" ">
+                <label>Select All</label>
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="add-contact-search">
+            <input type="text" class="form-control" name="search-box" placeholder="Search Contacts" (keyup)="contactSearch($event)">
+          </div>  
+        </div>
+        <div class="col-sm-3">
+          <div class="add-content-delete hide">
+            <button type="button" class="btn btn-secondary btn-sm pull-right btn-delete">Delete</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <form [formGroup]="contactsSelectForm">
+      <table class="contacts-list-table table table-responsive">
+        <tr class="table-body" *ngFor="let contact of allContacts | paginate : { itemsPerPage:10, currentPage: page, id : 1, totalItems: totalItems }">
+          <td class="contacts-name">
+            <span *ngIf="contact.isChecked"  class="contacts-name-input-span">
+              <input type="checkbox" checked (change)="onChange(contact,$event.target.checked)">
+              <label class="contact-name-label">{{contact?.list_name}}</label>
+            </span>
+            <span *ngIf="!contact.isChecked" class="contacts-name-input-span"> 
+              <input type="checkbox" (change)="onChange(contact,$event.target.checked)">
+              <label class="contact-name-label">{{contact?.list_name}}</label>
+            </span>
+          </td>
+          <td class="container-header-contact">
+            {{contact.status}}
+          </td>
+          <td class="table-dropdown">
+            <a class="add-contact-view" (click)="openModal($event,contact)">View</a>
+          </td>
+        </tr>
+      </table>
+      <div class="row" *ngIf="isDataLoaded">
+        <div class="col-sm-8 col-sm-offset-2">
+          <ul class="pagination">
+            <pagination-controls 
+            (pageChange) = "page = getServerData($event)" 
+            id="1"
+            maxSize = "10"
+            directionLinks = "true"
+            autohide = "true"
+            >
+            </pagination-controls>
+          </ul>
+        </div>
+      </div>
+    </form>
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="addcontacts-next">
+          <button class="btn btn-primary" type="button" (click)="moveToNextStage($event)">Next</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Modal to import contacts -->
+<div class="backdrop" [ngStyle]="{'display':importDisplay}"></div>
+<div class="modal bd-example-modal-md" tabindex="-1" [ngStyle]="{'display':importDisplay}" role="dialog">
+  <div class="modal-dialog modal-md imports-contact-modal">
+    <div class="modal-content">
+      <button type="button" class="close" (click)="onCloseImportHandled()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+      <div class="modal-header">
+        <app-alerts></app-alerts>
+        <h2>Import your contacts</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus incidunt laboriosam vel ea, cumque perspiciatis sit assumenda voluptatibus modi nihil cupiditate aliquid minus fugit tenetur soluta ab enim quia optio?</p>
+      </div>
+      <form action="" [formGroup]="addContactFormGroup" #addContactsForm="ngForm" (ngSubmit)="onContactUpload(addContactsForm)">
+        <div class="modal-body">
+          <div class="form-froup">
+            <label for="">List Name</label>
+            <input type="text" formControlName="contactlist_name" class="form-control">
+          </div>
+          <br>
+          <div class="form-group add-contacts-dropzone">
+            <input type="file" (change)="fileChange($event)" placeholder="Upload file" accept="">
+            <!-- <kendo-upload
+            [saveUrl]="uploadSaveUrl"
+            [multiple]="false"
+            (upload)="uploadEventHandler($event)"
+            (select)="selectEventHandler($event)">
+          </kendo-upload> -->   
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary pull-right"  (click)="onCloseImportHandled()">Close</button>
+        <button type="submit" class="btn btn-secondary pull-right m-r-1">Import</button>
+      </div>
+    </form>
+  </div>
+</div>
+</div>
+<!-- Modal for view contact stats -->
+<div class="backdrop" [ngStyle]="{'display':display}"></div>
+<div class="modal bd-view-stats-model" tabindex="-1" role="dialog"  [ngStyle]="{'display':display}">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <button type="button" class="close" aria-label="Close" (click)="onCloseHandled()"><span aria-hidden="true">&times;</span></button>
+      <div class="modal-header">
+        <span>
+          <label for="">Name:</label>
+          <p>{{contactStatsData?.list_name}}</p>
+        </span>
+        <span>
+          <label for="">
+            Status: 
+          </label>
+          <p>
+            {{contactStatsData?.status}}
+          </p>
+        </span>
+      </div>      
+      <div class="modal-body">
+        <table>
+          <tr>
+            <th>Valid</th>
+            <th>Invalid</th>
+            <th>Unverified</th>
+            <th>Unsubscribed</th>
+            <th>Undetermined</th>
+          </tr>
+          <tr>
+            <td>{{contactStatsData?.stats.valid}}</td>
+            <td>{{contactStatsData?.stats.invalid}}</td>
+            <td>{{contactStatsData?.stats.unverified}}</td>
+            <td>{{contactStatsData?.stats.unsubscribed}}</td>
+            <td>{{contactStatsData?.stats.undetermined}}</td>
+          </tr>
+        </table>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary pull-right" (click)="onCloseHandled()" >Close</button>
+        <!-- <button type="submit" class="btn btn-secondary pull-right m-r-1">Download</button> -->
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal !-->
+

@@ -1,0 +1,118 @@
+@import 'variables';
+@import 'button';
+@import 'table';
+@import 'dropdown';
+
+.mycampaign-creation-section{
+  padding:0 30px;
+  .mycampaign-creation-header{
+    h3{
+      text-align: center;
+    }
+    p{
+      text-align: center;
+      font-size: 18px;
+    }
+  }
+  .mycampaign-creation-search{
+    .m-t-1{
+      margin-top: 30px;
+    }
+    .campaign-filter{
+      display: flex;
+      .filter-image{
+        margin-right: 15px;
+      }
+      mat-form-field{
+        width: 100px;
+        ::ng-deep.mat-form-field-infix{
+          border-top-width: 0;
+        }
+      }
+    }
+    .mycampaign-search{
+      justify-content: center;
+      align-items: center;
+      display: flex;
+      .search-box{
+        width: 400px; 
+      }
+    }
+    .btn-turtle {
+      font-size: 16px;
+    }
+  }
+  .campaigns-table {
+    .table-heading {
+      .table-heading-name{
+        font-weight: 300;
+        text-align: left;
+        padding-left: 25px;
+      }
+    }
+    .table-body {
+      .campaign-name {
+        text-align: left;
+        font-size: 18px;
+        color:$secondary-color;
+        padding-left: 25px;
+        vertical-align: middle;
+      }
+      .campaign-date {
+        font-size: 16px;
+        vertical-align: middle;
+      }
+      .campaign-header-contact {
+        font-size: 16px;
+        vertical-align: middle;
+        .progress-statusbox{
+            position: absolute;
+            background-color: $white-color;
+            p{
+              color: $primary-color;
+            }
+        }
+      }
+      .sent{
+        color: $sent-color;
+      }
+      .draft{
+        color:$draft-color;
+      }
+      .pending{
+        color:$unsubscribed-color;
+      }
+    }
+  }
+  .pagination>li>a,
+  .pagination>li>span {
+    border-radius: 50% !important;
+    margin: 0 5px;
+    border: none; 
+  }
+  .pagination {
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    .fa-arrow-left {
+      color: $primary-color;
+      font-size: 18px;
+    }
+    .fa-arrow-right {
+      color: $primary-color;
+      font-size: 18px;
+    }
+  }
+}
+.dropdown-toggle{
+  padding: 0;
+  text-align: left;
+}
+.dropdown-menu:after {
+  right: 75%;
+  top: -15px;
+}
+.dropdown-menu{
+  width: 150px;
+  min-height: 80px;
+}

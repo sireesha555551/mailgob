@@ -1,0 +1,620 @@
+
+@import 'variables';
+@import 'button';
+$circle-size: 90px;
+$inset-size: 80px;
+$transition-length: 1s;
+// blue
+
+$circle-size-blue: 130px;
+$inset-size-blue: 120px;
+// orange
+
+$circle-size-orange: 170px;
+$inset-size-orange: 160px;
+// skyblue
+$circle-size-skyblue: 210px;
+$inset-size-skyblue: 200px;
+
+// progress
+/* VARIABLES */
+
+$progress-width: 133px;
+$progress-height: .25em;
+
+
+
+
+
+
+.campaign-creation-section{
+    .m-t-1{
+        margin-top: 20%;
+    }
+    .campaign-creation-top{
+        margin-top: 10px;
+        padding:10px 20px 0px 20px;
+        border: solid 1px $input-border-color;
+        p{
+            color:$anchor-link-color;
+            font-style: oblique;
+        }
+        .campaign-name{
+            h4{
+                margin: 0px;
+                i{
+                    padding-left: 5px;
+                    color: $anchor-link-color;
+                }
+            }
+            p{
+                color: $anchor-link-color;
+                padding: 0px;
+                font-style: normal;
+                margin: 0px;
+            }
+        }
+        .campaign-name-editing{
+            i{
+                padding: 5px;
+                color: $anchor-link-color;
+                font-size: 18px;
+            }
+        }
+        .campaign-name-creation-border{
+            border-bottom: solid 1px $input-border-color;
+        }
+        .p-t-1{
+            padding-top: 5px;
+        .campaign-subject{
+            padding-bottom: 5px;
+            p{
+                margin: 0px;
+            }
+        }
+        .fa-eye{
+            padding-left: 5px;
+        }
+      }
+    }
+    .campaign-creation-graph{
+        padding-top: 10px;
+        .campaign-creation-graph-section{
+            margin-top: 10px;
+            border: solid 1px $input-border-color;
+            min-height: 400px;
+            .campaign-red-position{
+                position: relative;
+                top: 66px;
+                @include tablet{
+                    top: 18px;
+                }
+                @include largeScreen{
+                    position: absolute;
+                    top: 19%;
+                }
+                
+
+            }
+            .unsubscribe-percent {
+                margin: 20px auto;
+                width:  $circle-size;
+                height: $circle-size;
+            
+                background-color: $second-buton-border;
+                border-radius: 50%;
+                    .ko-progress-circle__slice, .ko-progress-circle__fill {
+                        width:    $circle-size;
+                        height:   $circle-size;
+                        position: absolute;
+                        -webkit-backface-visibility: hidden;
+                        transition: transform $transition-length;
+                        border-radius: 50%;
+                    }
+                    .ko-progress-circle__slice {
+                        clip: rect(0px, $circle-size, $circle-size, $circle-size/2);
+                        .ko-progress-circle__fill {
+                            clip: rect(0px, $circle-size/2, $circle-size, 0px);
+                            background-color: $unsubscribed-color;
+                        }
+                }
+                .ko-progress-circle__overlay {
+                    width:       $inset-size;
+                    height:      $inset-size;
+                    position:    absolute;
+                    margin-left: ($circle-size - $inset-size)/2;
+                    margin-top:  ($circle-size - $inset-size)/2;
+            
+                    background-color: $white-color;
+                    border-radius: 50%;
+                }
+            
+                $i: 0;
+                $increment: 180deg / 100;
+                @while $i <= 100 {
+                    &[data-progress='#{$i}'] {
+                            .ko-progress-circle__slice.full, .ko-progress-circle__fill {
+                      transform: rotate($increment * $i);
+                            }	
+                            .ko-progress-circle__fill.ko-progress-circle__bar {
+                                transform: rotate($increment * $i * 2);
+                            }
+                  $i: $i + 1;
+                    }
+                }
+            }
+            .campaign-blue-position{
+                position: absolute;
+                top: 14%;
+                z-index: -1;
+            .campaign-graph-circle-blue{
+                .bounced-percent{
+                    margin: 20px auto;
+                    width:  $circle-size-blue;
+                    height: $circle-size-blue;
+                
+                    background-color: $second-buton-border;
+                    border-radius: 50%;
+                        .ko-progress-circle__slice, .ko-progress-circle__fill {
+                            width:    $circle-size-blue;
+                            height:   $circle-size-blue;
+                            position: absolute;
+                            -webkit-backface-visibility: hidden;
+                            transition: transform $transition-length;
+                            border-radius: 50%;
+                        }
+                        .ko-progress-circle__slice {
+                            clip: rect(0px, $circle-size-blue, $circle-size-blue, $circle-size-blue/2);
+                            .ko-progress-circle__fill {
+                                clip: rect(0px, $circle-size-blue/2, $circle-size-blue, 0px);
+                                background-color: $bounced-color;
+                            }
+                    }
+                    .ko-progress-circle__overlay {
+                        width:       $inset-size-blue;
+                        height:      $inset-size-blue;
+                        position:    absolute;
+                        margin-left: ($circle-size-blue - $inset-size-blue)/2;
+                        margin-top:  ($circle-size-blue - $inset-size-blue)/2;
+                
+                        background-color: $white-color;
+                        border-radius: 50%;
+                    }
+                
+                    $i: 0;
+                    $increment: 180deg / 100;
+                    @while $i <= 100 {
+                        &[data-progress='#{$i}'] {
+                                .ko-progress-circle__slice.full, .ko-progress-circle__fill {
+                          transform: rotate($increment * $i);
+                                }	
+                                .ko-progress-circle__fill.ko-progress-circle__bar {
+                                    transform: rotate($increment * $i * 2);
+                                }
+                      $i: $i + 1;
+                        }
+                    }
+                }
+            }
+        }
+        .campaign-orange-position{
+            position: absolute;
+            top: 9%;
+            z-index: -2;
+        .campaign-graph-circle-orange{
+            .opened-percent{
+                margin: 20px auto;
+                width:  $circle-size-orange;
+                height: $circle-size-orange;
+            
+                background-color: $second-buton-border;
+                border-radius: 50%;
+                    .ko-progress-circle__slice, .ko-progress-circle__fill {
+                        width:    $circle-size-orange;
+                        height:   $circle-size-orange;
+                        position: absolute;
+                        -webkit-backface-visibility: hidden;
+                        transition: transform $transition-length;
+                        border-radius: 50%;
+                    }
+                    .ko-progress-circle__slice {
+                        clip: rect(0px, $circle-size-orange, $circle-size-orange, $circle-size-orange/2);
+                        .ko-progress-circle__fill {
+                            clip: rect(0px, $circle-size-orange/2, $circle-size-orange, 0px);
+                            background-color: $tracked-color;
+                        }
+                }
+                .ko-progress-circle__overlay {
+                    width:       $inset-size-orange;
+                    height:      $inset-size-orange;
+                    position:    absolute;
+                    margin-left: ($circle-size-orange - $inset-size-orange)/2;
+                    margin-top:  ($circle-size-orange - $inset-size-orange)/2;
+            
+                    background-color: $white-color;
+                    border-radius: 50%;
+                }
+            
+                $i: 0;
+                $increment: 180deg / 100;
+                @while $i <= 100 {
+                    &[data-progress='#{$i}'] {
+                            .ko-progress-circle__slice.full, .ko-progress-circle__fill {
+                      transform: rotate($increment * $i);
+                            }	
+                            .ko-progress-circle__fill.ko-progress-circle__bar {
+                                transform: rotate($increment * $i * 2);
+                            }
+                  $i: $i + 1;
+                    }
+                }
+            }
+        }
+    }
+    .campaign-skyblue-position{
+        position: absolute;
+        top: 4%;
+        z-index: -3;
+    .campaign-graph-circle-skyblue{
+        .delivered-percent{
+            margin: 20px auto;
+            width:  $circle-size-skyblue;
+            height: $circle-size-skyblue;
+        
+            background-color: $second-buton-border;
+            border-radius: 50%;
+                .ko-progress-circle__slice, .ko-progress-circle__fill {
+                    width:    $circle-size-skyblue;
+                    height:   $circle-size-skyblue;
+                    position: absolute;
+                    -webkit-backface-visibility: hidden;
+                    transition: transform $transition-length;
+                    border-radius: 50%;
+                }
+                .ko-progress-circle__slice {
+                    clip: rect(0px, $circle-size-skyblue, $circle-size-skyblue, $circle-size-skyblue/2);
+                    .ko-progress-circle__fill {
+                        clip: rect(0px, $circle-size-skyblue/2, $circle-size-skyblue, 0px);
+                        background-color: $delivered-color;
+                    }
+            }
+            .ko-progress-circle__overlay {
+                width:       $inset-size-skyblue;
+                height:      $inset-size-skyblue;
+                position:    absolute;
+                margin-left: ($circle-size-skyblue - $inset-size-skyblue)/2;
+                margin-top:  ($circle-size-skyblue - $inset-size-skyblue)/2;
+        
+                background-color: $white-color;
+                border-radius: 50%;
+            }
+        
+            $i: 0;
+            $increment: 180deg / 100;
+            @while $i <= 100 {
+                &[data-progress='#{$i}'] {
+                        .ko-progress-circle__slice.full, .ko-progress-circle__fill {
+                  transform: rotate($increment * $i);
+                        }	
+                        .ko-progress-circle__fill.ko-progress-circle__bar {
+                            transform: rotate($increment * $i * 2);
+                        }
+              $i: $i + 1;
+                }
+            }
+        }
+    }
+}
+            .campaign-creation-data-status{
+                padding: 10px 40px 20px 40px;
+                margin-top: 35%;
+                @include largeScreen{
+                    margin-top:43%
+                }
+                .dot{
+                    height: 10px;
+                    width: 10px;
+                    background-color:$delivered-color;
+                    border-radius: 50%;
+                    display: inline-block;
+                    padding: 0px;
+                    margin: 0px;
+                    }
+                    .status{
+                        padding: 0px;
+                        cursor: pointer;
+                    }
+                    .opened-color{
+                        background-color:$tracked-color;
+                    }
+                    .bounced-color{
+                        background-color:$bounced-color;
+                    }
+                    .unsubscribe-color{
+                        background-color:$unsubscribed-color;
+                    }
+
+                    
+
+            }
+            
+
+        }
+
+    }
+    .campaign-creation-contact-list{
+        margin-top: 10px;
+        margin-bottom: 10px;
+        border: solid 1px $input-border-color;
+        min-height: 450px;
+        background-color: $table-background-color;
+        .campaign-creation-performance{
+            h4{
+                background-color:$button-second-color;
+                margin: 0px;
+                padding: 15px;
+                font-weight: bold;
+            }
+        }
+        .campaign-creation-tabs{
+            .nav{
+                li{
+                    a{
+                        color:$secondary-color;
+                        background:none;
+                        &:focus, &:hover,&:active, &:visited{
+                            background-color: none;
+                           
+                        }
+                    }
+                }
+                li.active{
+                    a{
+                        color: $secondary-color;
+                        background-color: none;
+                        font-weight: bold;
+                    }
+                }
+            }
+            .tab-pane{
+                background-color: $white-color;
+                margin: 0px 10px 0px 10px;
+                min-height: 350px;
+                border: solid 1px $input-border-color;
+            }
+            
+            .campaign-contact-creation-tab{
+                padding-top: 20px;
+                padding-left:50px;
+                position: relative;
+                text-decoration: none;
+                &:after{
+                    content: '';
+                    display: block;  
+                    position: absolute;
+                    left:4%;
+                    bottom: 100%;
+                    border-bottom: 10px solid $white-color;
+                    border-top: 10px solid transparent;
+                    border-left: 10px solid transparent;
+                    border-right: 10px solid transparent;
+                }
+                .contact-list-onclick{
+                    cursor: pointer;
+                }
+                h5{
+                    margin: 0px;
+                }
+                p{
+                    font-size: 12px;
+                    padding: 0px;
+                    color: $anchor-link-color;
+                    margin: 0px;
+                    // padding-bottom: 20px;
+                }
+                .progress-width{
+                    width: 125px; 
+                    position: relative;
+                .progress {
+                    background-color: $second-buton-border;
+                    height: $progress-height;
+                    position: relative !important;
+                    width: $progress-width;
+                    cursor: pointer;
+                  
+                    .progress-bar {
+                    //   animation-duration: 3s;
+                      animation-name: width;
+                      background-image: linear-gradient(to right, $unsubscribed-color,$help-color-two, $alert-success-color);
+                      background-repeat: no-repeat;
+                      background-size: $progress-width $progress-height;
+                      height: 100%;
+                      margin : 0px;
+                      position: relative;
+                      cursor: pointer;
+                    }
+                    #width{
+                        width: 140px;
+                    }
+                                      
+                }
+                .progress-arrow{
+                    padding: 0 15px;
+                    .fa{
+                        position: absolute;
+                        top:0px;
+                    }
+                }
+            }
+                
+                  @keyframes width {
+  
+                    0%, 100% {
+                      transition-timing-function: cubic-bezier(1, 0, .65, .85);
+                    }
+                  
+                    0% {
+                      width: 0;
+                    }
+                  
+                    100% {
+                      width: 100%;
+                    }
+                  
+                  }
+                  .campaign-contact-border{
+                    border-bottom: solid 1px $input-border-color;
+                    width: 88%;
+                    margin-bottom: 15px;
+                    margin-left: 10px;
+                  }
+                  .campaign-creation-hover-popup{
+                      .card{
+                        border: solid 1px $second-buton-border;
+                        padding-top: 10px;
+                        padding-left: 20px;
+                        min-height: 120px;
+                        width: 88%;
+                        background-color: $table-background-color;
+                        margin-bottom: 10px;
+                        .padding-zero{
+                            padding: 0px;
+                        }
+                        .width{
+                            width: 25px;
+                        }
+                        .dot {
+                            height: 10px;
+                            width: 10px;
+                            background-color:$delivered-color;
+                            border-radius: 50%;
+                            display: inline-block;
+                        }  
+                        p{
+                            color:$secondary-color;
+                        }  
+                        h5{
+                            font-style: bold;
+                        }  
+                        .opened-color{
+                            background-color:$tracked-color;
+                        } 
+                        .bounced-color{
+                            background-color:$bounced-color;
+                        }  
+                        .unsubscribe-color {
+                            background-color:$unsubscribed-color;
+                        }    
+                    }
+                    #card{
+                        display: inline-block;
+                        position: relative;
+                        text-decoration: none;
+                        padding:10px;
+                        
+                    }
+                    #card:after{
+                        content: '';
+                        display: block;  
+                        position: absolute;
+                        left:90%;
+                        bottom: 100%;
+                        border-bottom: 10px solid $table-background-color;
+                        border-top: 10px solid transparent;
+                        border-left: 10px solid transparent;
+                        border-right: 10px solid transparent;
+                    }
+                    .campaign-creation-popover-bounced{
+                        padding-top: 20px;
+                    }
+                    .campaign-creation-total{
+                        padding-top: 20px;
+                        padding-left: 60px;
+                        h5{
+                            font-weight: bold;
+                        }
+                    }
+                  }
+                
+             }
+            .campaign-email-creation-tab{
+                padding: 15px 25px 10px 20px;
+                position: relative;
+                text-decoration: none;
+                &:after{
+                    content: '';
+                    display: block;  
+                    position: absolute;
+                    left:17%;
+                    bottom: 100%;
+                    border-bottom: 10px solid $white-color;
+                    border-top: 10px solid transparent;
+                    border-left: 10px solid transparent;
+                    border-right: 10px solid transparent;
+                    @include largeScreen{
+                        left: 11%;
+                    }
+                    
+                }
+                // .email-tab-table-border{
+                //     border-bottom: solid 1px $input-border-color;
+                // }
+                h5{
+                    margin: 0px;
+                    margin: 5px;
+                }
+                p{
+                    font-size: 12px;
+                    padding: 0px;
+                    padding-bottom: 5px;
+                    font-style: italic;
+                    color: $anchor-link-color;
+                    margin: 0px;
+                    padding-left: 5px;
+                    // border-bottom: solid 1px $input-border-color;
+                }
+                .email-tab-border-bottom{
+                    border-bottom: solid 1px $input-border-color;
+                    margin-left: 20px;
+                    margin-right: 10px;
+                }
+            }
+
+                
+        }
+    }
+}
+
+
+
+// #contactlist:hover + #card{
+//     display: block;
+// }
+// #card{
+//     display: none;
+// }
+
+
+
+
+/* PROGRESS */
+
+
+  
+  /* ANIMATIONS */
+  
+ 
+     // .progress-shadow{
+     //                    input[type:="range"] {
+     //                        &::-webkit-slider-thumb {
+     //                            -webkit-appearance: none;
+     //                            -moz-appearance: none;
+     //                            width: 20px;
+     //                            height: 20px;
+     //                            border: 1px solid blue;
+     //                            border-radius: 50%;
+     //                            background: #fff;
+     //                            box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.6);
+     //                        }
+     //                    }
+     //                } 

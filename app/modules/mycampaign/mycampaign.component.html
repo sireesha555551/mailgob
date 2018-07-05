@@ -1,0 +1,126 @@
+<div class="mycampaign-creation-section">
+  <div class="mycampaign-creation-header">
+    <h3 class="head-section-title">My Campaigns</h3>
+    <!-- <p>Lorem ipsum dolor sit am consectetur adipiscing elit. Nullam at neque at
+      <br> sapien ornare aliquet nec a lacus.</p> -->
+  </div>
+  <div class="mycampaign-creation-search">
+    <div class="row m-t-1">
+      <div class="col-sm-3">
+        <span class="campaign-filter">
+          <img class="filter-image" src="assets/images/filter.png" height="25" alt="">
+          <div class="campaign-filter-select">
+            <mat-form-field>
+              <mat-select placeholder="" [(value)]="selectedFilter" (change)="onCampaignTypeChange($event,$event.value)">
+                <mat-option value="all">
+                  All
+                </mat-option>
+                <mat-option value="sent">
+                  Sent
+                </mat-option>
+                <mat-option value="draft">
+                  Draft
+                </mat-option>
+                <mat-option value="inprogress">
+                  In Progress
+                </mat-option>
+                <mat-option value="initiated">
+                  Created
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </span>
+      </div>
+      <div class="col-sm-6">
+        <div class="mycampaign-search">
+          <input type="text" class="form-control search-box" name="search-box" placeholder="Search Campaign" (keyup)="campaignSearch($event)">
+        </div>
+      </div>
+      <div class="col-md-3">
+        <button type="button" class="btn btn-primary btn-turtle pull-right" (click)="createCampaign($event)">Add campaign</button>
+      </div>
+    </div>
+  </div>
+  <div class="row m-t-1" *ngIf="isDataLoaded">
+    <table class="table table-responsive campaigns-table">
+      <tr class="table-heading">
+        <th class="table-heading-titles table-heading-name">Name</th>
+        <th class="table-heading-titles">Date</th>
+        <th class="table-heading-titles">Sent</th>
+        <!-- <th class="table-heading-titles">Delivered</th> -->
+        <th class="table-heading-titles">Status</th>
+        <th class="table-heading-titles">Action</th> 
+      </tr>
+      
+      <tr class="table-body" *ngFor='let campaign of campaigns | paginate : { itemsPerPage:10, currentPage:page, id : 1, totalItems: totalItems } '>
+        <td class="campaign-name">{{campaign.name}}
+          <!-- <span class="information-tooltip" matTooltip="Tooltip!" matTooltipPosition="above">  <i class="fa fa-info-circle"></i></span> -->
+        </td>
+        <td class="campaign-date">{{campaign.created_date}}</td>
+        <td class="campaign-header-contact">{{campaign.sent}}</td>
+        <!-- <td class="campaign-header-contact">{{campaign.delivered}}</td> -->
+        <!-- <td class="campaign-header-contact">209</td> -->
+        <td class="campaign-header-contact sent">
+          <p (mouseover)="onMouseOver($event,campaign)" (mouseleave) ="onMouseLeave($event,campaign)" [style.color]="campaign.color">
+            {{campaign.statusText}}
+          </p> 
+          <div *ngIf="campaign.isShowdiv" class="well progress-statusbox" style="position: absolute;">
+            <p>Sent / Total</p>
+            <!-- <p>Stats</p> -->
+            <p> {{campaign.pendingSent}}   /     {{campaign.pendingTotal}}</p>
+          </div>
+        </td>
+        <td class="table-dropdown">
+          <div class="dropdown">
+            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Options
+              <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" *ngIf="!campaign.inProgress">
+              <li *ngIf="campaign.isAllowToResend"><a (click)="onViewCampaignClick($event,campaign)">View</a></li>
+              <!-- <li><a>Download</a></li> -->
+              <li *ngIf="campaign.isAllowToResend"><a (click)="onResendExistingCampaign(campaign.campaign_id)">Resend
+                </a>
+              </li>
+              <li *ngIf="campaign.pending"><a (click)="onCampaignResume(campaign.campaign_id)">Resume</a></li>
+              <li *ngIf="campaign.draft"><a (click)="OnSendCampaign(campaign.campaign_id)">Send</a></li>
+              <li><a (click)="onCampaignDelete(campaign.campaign_id,$event)">Delete</a></li>
+            </ul>
+          </div>
+        </td>
+      </tr>
+    </table>
+    <h3 class="text-center" *ngIf="isCampaignsEmpty" >No Campaigns found..</h3>
+  </div>
+  <div class="" *ngIf="isPageLoaded">
+    <ul class="pagination">
+      <pagination-controls 
+        (pageChange) = "page = getServerData($event)" 
+        id="1"
+        maxSize = "10"
+        directionLinks = "true"
+        autohide = "true"
+        >
+      </pagination-controls>
+      <!-- <li class="disabled"><a><i class="fa fa-arrow-left fa-3x" aria-hidden="true"></i></a></li>
+      <li class="active"><a style="background-color: #4ed8da">1 <span class="sr-only">(current)</span></a></li>
+      <li><a>2</a></li>
+      <li><a>3</a></li>
+      <li><a>4</a></li>
+      <li><a>5</a></li>
+      <li><a>6</a></li>
+      <li><a>7</a></li>
+      <li><a><i class="fa fa-arrow-right fa-3x" aria-hidden="true"></i></a></li> -->
+    </ul>
+  </div>
+  <div class="row" *ngIf="!isDataLoaded">
+    <div class="col-sm-6 col-sm-offset-3 spinner">
+      <span class="text-center">
+        <i class="fa fa-spinner fa-spin" style="font-size:50px"></i>
+      </span>
+      <span class="text-center">
+        <p>Loading....</p>
+      </span>
+    </div>
+  </div>
+</div>

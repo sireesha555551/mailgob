@@ -1,0 +1,11 @@
+<div *ngIf="isDirective">
+	<div *ngIf="isDrag">
+		<app-createtemplate (stepperEvent)="stepperChange($event)"></app-createtemplate>
+	</div>
+	<div *ngIf="isRichText">
+		<app-text-editor (stepperEvent)="stepperChange($event)"></app-text-editor>	
+	</div>
+</div>
+<div *ngIf="!isDirective">
+	<app-choose-template></app-choose-template>
+</div>

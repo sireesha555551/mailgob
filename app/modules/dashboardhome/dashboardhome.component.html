@@ -1,0 +1,284 @@
+<div class="dashboard-section">
+	<div class="row">
+		<div class="col-sm-10">
+			<h2 class="head-section-title">Welcome to MailGob Dashboard</h2>
+			<p class="text-center dashboard-section-desc"></p>
+		</div>
+		<div class="col-sm-2">
+			<div class="create-campaign-button m-t-1">
+				<button class="btn btn-primary" (click)="createCampaign($event)">Create Campaign</button>
+			</div>
+		</div>
+	</div>
+	<div class="row m-t-1" *ngIf="isPageLoaded">
+		<div class="col-sm-10">
+			<div class="dashboard-chart-secton">
+				<div class="row">
+					<div class="col-sm-4">
+						<div class="dashboard-header">
+							<p class="dashboard-header-title">Overview</p>
+						</div>
+					</div>
+					<div class="col-sm-4">
+						<div class="dashboard-search">
+							<input type="text" class="form-control" (keyup)="campaignSearch($event)" value="{{searchedCampaign}}" name="search-box" placeholder="Search Campaign">
+							<div class="search-box-data" *ngIf="flag">
+								<div *ngIf="searchedCampaigns.length">
+									<ul class="campaign-searched-data" *ngFor="let campaign of searchedCampaigns">
+										<li>
+											<a class="searchbox-campaign" (click)="getCampaignInfo(campaign.cpg_name, $event, campaign.cpg_id)">
+												{{campaign.cpg_name}}
+											</a>
+										</li>
+									</ul>
+								</div>
+								<div *ngIf="!searchedCampaigns.length">
+									<p class="text-center">No Campaigns Data based on search result</p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-4">
+						<div class="dashboard-graph-types">
+							<div class="row">
+								<span class="graphtypes-text col-sm-6">
+									<i class="fa fa-circle fa-delivered" aria-hidden="true"></i>Delivered</span>
+								<span class="graphtypes-text col-sm-6">
+									<i class="fa fa-circle fa-opened" aria-hidden="true"></i>Opened</span>
+							</div>
+							<div class="row">
+								<span class="graphtypes-text col-sm-6">
+									<i class="fa fa-circle fa-bounced" aria-hidden="true"></i>Bounced</span>
+								<span class="graphtypes-text col-sm-6">
+									<i class="fa fa-circle fa-unsub" aria-hidden="true"></i>Unsubscribed</span>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-sm-12">
+						<div class="dashboard-graphs-data" id="chartContainer">
+							<ul class="nav nav-tabs" id="myTab" role="tablist">
+								<li class="nav-item active">
+									<a class="nav-link" id="home-tab" (click)="getDayGraph()" data-toggle="tab" href="#home" role="tab" aria-controls="home"
+									 aria-selected="true">Day</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link" id="profile-tab" (click)="getWeekGraph($event)" data-toggle="tab" href="#profile" role="tab" aria-controls="profile"
+									 aria-selected="false">Week</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link" id="contact-tab" (click)="getMonthGraph($event)" data-toggle="tab" href="#contact" role="tab" aria-controls="contact"
+									 aria-selected="false">Month</a>
+								</li>
+							</ul>
+							<div class="tab-content" id="myTabContent">
+								<div class="tab-pane fade in active" id="home" role="tabpanel" aria-labelledby="home-tab">
+									<div *ngIf="isChart" id="piechart" style="width: 900px;"></div>
+									<!-- <div id="chartDayContainer" style="height: 350px; width: 100%;" *ngIf="isChart">
+									</div> -->
+									<div id="chartImage" *ngIf="!isChart">
+										<img class="img img-responsive" src="https://s3-us-west-2.amazonaws.com/mailgobimages/Website+Images/no+data+sent+yet.png"
+										 alt="">
+									</div>
+								</div>
+								<div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+									<div *ngIf="isChart" id="weekChart" style="width: 800px;"></div>
+									<!-- <div id="chartWeekContainer" style="height: 350px; width: 100%;" *ngIf="isChart">
+									</div> -->
+									<div id="chartImage" *ngIf="!isChart">
+										<img class="img img-responsive" src="https://s3-us-west-2.amazonaws.com/mailgobimages/Website+Images/no+data+sent+yet.png"
+										 alt="">
+									</div>
+								</div>
+								<div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+									<div *ngIf="isChart" id="monthChart" style="width: 800px;"></div>
+									<!-- <div id="chartMonthContainer" style="height: 350px; width: 100%;" *ngIf="isChart">
+									</div> -->
+									<div id="chartImage" *ngIf="!isChart">
+										<img class="img img-responsive" src="https://s3-us-west-2.amazonaws.com/mailgobimages/Website+Images/no+data+sent+yet.png"
+										 alt="">
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="dashboard-graphs-head">
+					<div class="row m-t-1">
+						<div class="col-sm-6">
+							<div *ngIf="isChart">
+								<p class="dashboard-graphs-latest-title">{{latestCampaign?.campaign_stats.cpg_name}}</p>
+							</div>
+							<div *ngIf="!isChart">
+								<p class="dashboard-graphs-latest-title">Campaign Name</p>
+							</div>
+						</div>
+						<div class="col-sm-6">
+							<!-- <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1"> -->
+							<!-- <ul class="nav navbar-nav navbar-right" *ngIf="isChart"> -->
+							<div class="dropdown navbar-right dropdown-right" *ngIf="isChart">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Recent campaigns
+									<span class="caret"></span>
+								</a>
+								<ul class="dropdown-menu">
+									<li *ngFor="let camp of lastFiveCampaigns">
+										<a (click)="getLatestGraph(camp?.cpg_id)">{{camp?.cpg_name}}</a>
+									</li>
+								</ul>
+							</div>
+							<!-- </ul> -->
+							<!-- </div> -->
+						</div>
+					</div>
+				</div>
+				<div class="dashboard-graphs-row">
+					<div class="row">
+						<div class="col-sm-2 dashboard-graph-col">
+							<span class="dashboard-graphs-types">
+								<i class="fa fa-circle fa-sent" aria-hidden="true"></i> Total
+							</span>
+							<div id="sentContainer" style="height: 150px; width: 100%;">
+							</div>
+							<div id="donut-percentage">
+								{{sentPercent}}%
+							</div>
+							<div id="donut-mails">
+								{{totalmails}}
+							</div>
+						</div>
+						<div class="col-sm-2 dashboard-graph-col">
+							<span class="dashboard-graphs-types">
+								<i class="fa fa-circle fa-delivered" aria-hidden="true"></i> Delivered
+							</span>
+							<div id="deliveredContainer" style="height: 150px; width: 100%;">
+							</div>
+							<div id="donut-percentage">
+								{{deliveredPercent}}%
+							</div>
+							<div id="donut-mails">
+								{{delivered}}
+							</div>
+						</div>
+						<div class="col-sm-2 dashboard-graph-col">
+							<span class="dashboard-graphs-types">
+								<i class="fa fa-circle fa-bounced" aria-hidden="true"></i> Bounced
+							</span>
+							<div id="graphContainer" style="height: 150px; width: 100%;">
+							</div>
+							<div id="donut-percentage">
+								{{bouncedPercent}}%
+							</div>
+							<div id="donut-mails">
+								{{bounced}}
+							</div>
+						</div>
+						<div class="col-sm-2 dashboard-graph-col">
+							<span class="dashboard-graphs-types">
+								<i class="fa fa-circle fa-opened" aria-hidden="true"></i> Opened
+							</span>
+							<div id="openedContainer" style="height:150px; width: 100%;">
+							</div>
+							<div id="donut-percentage">
+								{{openedPercent}}%
+							</div>
+							<div id="donut-mails">
+								{{tracked}}
+							</div>
+						</div>
+						<div class="col-sm-2 dashboard-graph-col">
+							<span class="dashboard-graphs-types">
+								<i class="fa fa-circle fa-unsub" aria-hidden="true"></i> Unsubscribed
+							</span>
+							<div id="unsubContainer" style="height: 150px; width: 100%;">
+							</div>
+							<div id="donut-percentage">
+								{{unsubPercent}}%
+							</div>
+							<div id="donut-mails">
+								{{unsubscribed}}
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-2 p-0">
+			<div class="dashboard-data-section">
+				<div class="dashboard-all-data-stats">
+					<div class="all-stats-data">
+						<div class="dashboad-all-data">
+							<span class="data-stats-details">
+								<i class="fa fa-paper-plane-o fa-bounced" aria-hidden="true"></i>
+								<p>{{allStats?.sent}}</p>
+							</span>
+							<p class="data-stats-title">Sent</p>
+							<img class="data-stats-image" src="/assets/images/graph.png" alt="">
+						</div>
+						<div class="dashboad-all-data">
+							<span class="data-stats-details">
+								<i class="fa fa-check fa-bounced" aria-hidden="true"></i>
+								<p>{{allStats?.delivered}}</p>
+							</span>
+							<p class="data-stats-title">Delivered</p>
+							<img class="data-stats-image" src="/assets/images/graph.png" alt="">
+						</div>
+						<div class="dashboad-all-data">
+							<span class="data-stats-details">
+								<i class="fa fa-eject fa-bounced" aria-hidden="true"></i>
+								<p>
+									{{allStats?.bounced}}
+								</p>
+							</span>
+							<p class="data-stats-title">Bounce Rate</p>
+							<img class="data-stats-image" src="/assets/images/graph.png" alt="">
+						</div>
+						<div class="dashboad-all-data">
+							<span class="data-stats-details">
+								<i class="fa fa-eye fa-bounced" aria-hidden="true"></i>
+								<p>
+									{{allStats?.opened}}
+								</p>
+							</span>
+							<p class="data-stats-title">Opened</p>
+							<img class="data-stats-image" src="/assets/images/graph.png" alt="">
+						</div>
+						<div class="dashboad-all-data">
+							<span class="data-stats-details">
+								<i class="fa fa-times fa-bounced" aria-hidden="true"></i>
+								<p>{{allStats?.unsubscribed}}</p>
+							</span>
+							<p class="data-stats-title">Unsubscribed</p>
+							<img class="data-stats-image" src="/assets/images/graph.png" alt="">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row" *ngIf="!isPageLoaded">
+		<div class="col-sm-6 col-sm-offset-3 spinner">
+			<span class="text-center">
+				<i class="fa fa-spinner fa-spin" style="font-size:50px"></i>
+			</span>
+			<span class="text-center">
+				<p>Loading....</p>
+			</span>
+		</div>
+	</div>
+</div>
+<!-- <div class="row">
+	<div class="col-sm-2">
+		<google-chart [data]="donutChartData"></google-chart>
+	</div>
+	<div class="col-sm-2">
+		<google-chart [data]="donutChartData"></google-chart>
+	</div>
+	<div class="col-sm-2">
+		<google-chart [data]="donutChartData"></google-chart>
+	</div>
+	<div class="col-sm-2">
+		<google-chart [data]="donutChartData"></google-chart>
+	</div>
+</div> -->
+

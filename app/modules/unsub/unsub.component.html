@@ -1,0 +1,27 @@
+<div class="container-fluid unsubscribe-background-color">
+  <div class="container">
+    <div clas="row">
+      <div class="col-md-12">
+        <div class="unsubscribe-content">
+          <h1>UNSUBSCRIBE</h1>
+          <p>We are sorry to see you go. Before you unsubscribe<br>
+          please let us know why are you leaving.</p>
+          <img src="assets/images/sad.png">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="card">
+  <div class="unsubscribe-comment text-center" *ngIf="!isUnsubscribed">
+    <textarea name="comment" [(ngModel)]="textValue" form="usrform" placeholder="Type your comment" maxlength="200"></textarea>
+      <p>your valuble feedback will help us to improve our services.</p>
+    <button (click)="onUnsubscribe($event,textValue)" class="btn">UNSUBSCRIBE</button>
+  </div>
+  <div class="unsubscribe-comment text-center" *ngIf="isUnsubscribed">
+  	<div class="unsub-message">
+  		<h3>Unsubscribed</h3>
+  	</div>
+  </div>
+</div>
+<div class="unsubscribe-div-card"></div>

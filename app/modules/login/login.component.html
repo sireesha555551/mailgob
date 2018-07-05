@@ -1,0 +1,181 @@
+<div class=" container">
+	<div class="row">
+		<div class="col-sm-12">
+			<div class="login-section-creation">
+				<div class="login-section-background">
+					<img src="https://s3-us-west-2.amazonaws.com/mailgobimages/Website+Images/bottom.jpg" alt="">
+				</div>
+				<div class="login-section-card">
+					<mat-card>
+						<mat-tab-group [selectedIndex]="selectedIndex">
+							<mat-tab label="Sign Up">
+								<h3 class="text-center">Create your free account</h3>
+								<form [formGroup]="userSignupGroup" #signupForm="ngForm" (ngSubmit)="onSignupClick(signupForm)">
+									<div class="row">
+										<div class="form-group col-sm-6">
+											<mat-form-field class="example-full-width">
+												<input matInput placeholder="First name" formControlName="first_name" required>
+											</mat-form-field>
+										</div>
+										<div class="form-group col-sm-6">
+											<mat-form-field class="example-full-width">
+												<input matInput placeholder="Last name" formControlName="last_name" required>
+											</mat-form-field>
+										</div>
+										<div class="form-group col-sm-12">
+											<mat-form-field class="example-full-width">
+												<input matInput placeholder="Company name(Optional)" class="mat-full-input" formControlName="company_name">
+											</mat-form-field>
+										</div>
+										<div class="form-group col-sm-6">
+											<mat-form-field>
+												<mat-select placeholder="Choose country" [(value)]="selected" required>
+													<mat-option *ngFor="let country of countries" [value]="country.id">
+														{{ country.name }}
+													</mat-option>
+												</mat-select>
+											</mat-form-field>
+										</div>
+										<div class="form-group col-sm-6">
+											<mat-form-field class="example-full-width">
+												<input matInput placeholder="Mobile" formControlName="contact_number" type="text">
+											</mat-form-field>
+										</div>
+										<div class="form-group col-sm-12">
+											<mat-form-field class="example-full-width">
+												<input matInput #email placeholder="Email address" formControlName="email" class="mat-full-input" type="email" required (blur)="checkEmailValue(email.value)">
+											</mat-form-field>
+										</div>
+										<div class="form-group col-sm-6">
+											<mat-form-field class="example-full-width">
+												<input type="password" name="password" matInput placeholder="Password" formControlName="password" minlength="5" type="password" required>
+											</mat-form-field>
+										</div>
+										<div class="form-group col-sm-6">
+											<mat-form-field class="example-full-width">
+												<input type="password" name="confirm_password" matInput placeholder="Confirm password" formControlName="confirm_password" type="password" required>
+											</mat-form-field>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-sm-12">
+											<span class="signup-form">
+												<input type="checkbox" (change)="onChange($event.target.checked)">
+												<label for="">
+													Yes, I agree to the Mailgob
+													<a class="signup-conditions" target="_blank" href="https://www.mailgob.com/termsconditions.html">Terms and conditions, </a>
+													<a target="_blank" class="signup-conditions" href="https://www.mailgob.com/privacy.html">Privacy Policy </a>
+													<a target="_blank" class="signup-conditions" href="https://www.mailgob.com/antispam.html">&amp; Anti-spam Policy</a>.
+												</label>
+											</span>
+											<span class="signup-form-conditions">
+											</span>
+										</div>
+									</div>
+									<div class="col-sm-12 form-group">
+										<div class="captcha">
+											<re-captcha #recaptchaRef2="reCaptcha" (resolved)="resolved($event)" siteKey="6Lf7nTIUAAAAAFb-7l3s6iih26OutXVyuzNGvpRQ"></re-captcha>
+										</div>
+									</div>
+									<div class="signup-button">
+										<button class="btn btn-alternate">CREATE</button>
+									</div>
+								</form>
+							</mat-tab>
+							<mat-tab label="Login">
+								<div class="login-creation-form">
+									<img class="login-image" src="/assets/images/logo.png">
+								</div>
+								<div class="login-creation-inputs">
+									<form [formGroup]="loginFormGroup" #loginForm="ngForm" (ngSubmit)="onLoginClick(loginForm)">
+										<div class="row">
+											<div class="col-sm-12 form-group">
+												<mat-form-field>
+													<input matInput formControlName="email" placeholder="Email address" type="email">
+												</mat-form-field>
+											</div>
+											<div class="col-sm-12 form-group">
+												<mat-form-field>
+													<input matInput placeholder="Password" formControlName="password" type="password">
+												</mat-form-field>
+											</div>
+										</div>
+										<div class="col-sm-12 text-right login-forgot">
+											<a class="forgot-password-text" data-toggle="modal" data-target="#forgotPasswordModel">Forgot password ?</a>
+										</div>
+										<div class="col-sm-12 form-group">
+											<div class="captcha">
+												<re-captcha #recaptchaRef="reCaptcha" (resolved)="resolved($event)" siteKey="6Lf7nTIUAAAAAFb-7l3s6iih26OutXVyuzNGvpRQ"></re-captcha>
+											</div>
+										</div>
+										<div class="signup-button" id="login-creation-button">
+											<button class="btn btn-alternate btn-md" type="submit">Login</button>
+										</div>
+									</form>
+								</div>
+							</mat-tab>
+						</mat-tab-group>
+					</mat-card>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="container-fluid">	
+	<div class="row login-background-row">
+		<div class="col-sm-12">
+		</div>
+	</div>
+</div>
+
+
+<div class="modal fade" id="forgotPasswordModel" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-body">
+				<div class="forgot-password-content">
+					<h5>Forgot password?</h5>
+					<p>Password reset link will be sent to your email</p>
+					<div class="inputBox">
+						<input type="text" name="" [(ngModel)]="userEmail" class="input" placeholder="Register email address">
+					</div>
+					<div class="forgot-password-button text-center">
+						<button class="btn btn-alternate" (click)="onFogotPasswordClick($event)">Send</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="robot-error-message">
+	<div class="card" *ngIf="isRobotError">
+		<div class="error-message-robot-img">
+			<img src="assets\images\robot.png">
+			<p>Please confirm you are not a robot</p>
+		</div>
+	</div>
+</div>
+
+
+<!-- <div class="backdrop" [ngStyle]="{'display':display}"></div>
+<div class="modal bd-resend-password-model" tabindex="-1" role="dialog"  [ngStyle]="{'display':display}">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <button type="button" class="close" aria-label="Close" (click)="onCloseHandled()"><span aria-hidden="true">&times;</span></button>
+      <div class="modal-header text-center">
+      	<i *ngIf="!isLoginError" class="fa fa-check fa-5x"></i>
+      	<i *ngIf="isLoginError" class="fa fa-exclamation-triangle fa-5x"></i>
+      </div>      
+      <div class="modal-body">
+      	<h3>
+      		{{message}}
+      	</h3>
+        <a (click)="onresendLink($event)">resend link</a>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary pull-right" (click)="onCloseHandled()" >Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+ -->

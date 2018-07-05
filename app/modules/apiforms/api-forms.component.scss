@@ -1,0 +1,85 @@
+.createtemplate-creation-summary{
+  .createcampaign-creation-heading{
+    h2{
+      text-align: center;
+      margin-top: 60px;
+      margin-bottom: 20px;
+    }
+  }
+  .col-md-3{
+    padding-right: 0px;
+  }
+  .createtemplate-campaign-name{
+    min-height: 70px;
+    background-color: #f4f4f4;
+  }
+  .createtemplate-color{
+    font-weight: bold;
+    color: #999ea0;
+    text-align: center;
+  }
+  p{
+    // text-align: center;
+    padding-left: 35px;
+    font-size: 20px;
+    padding-top: 28px;
+    vertical-align:middle;
+  }
+  .m-t-1{
+    margin-top:2px;
+  }
+  .createtemplate-selected-list{
+    p{
+    font-size: 20px;
+    color: #999ea0;
+    font-weight: bold;
+    }
+    .createtemplte-list{
+      // font-size: 18px;
+      font-size: 18px;
+      color: rgb(87, 80, 80);
+      padding-top: 37px;
+      font-family: Helvetica;
+    }
+  }
+  .createtemplate-selectedlist-button{
+    padding-left: 36px;
+    padding-top: 20px;
+    button{
+    border-radius: 5px;
+    background-color: #f4f4f4;
+    border: solid 1px #979797;
+    color: black;
+    font-size: 18px;
+    }
+  }
+  .m-t-2{
+    margin-top:100px;
+  }
+.createtemplate-savedraft{
+  button{
+    font-size: 20px;
+    border-radius: 5px;
+    border: solid 1px #ff0056;
+    background-color: #ffffff;
+    color: black;
+  }
+}
+.createtemplate-cancel{
+  button{
+    font-size: 20px;
+    background-color: #eeeeee;
+    border: solid 1px #979797;
+    color: black;
+  }
+}
+.createtemplate-send{
+  button{
+    font-size: 20px;
+    border-radius: 5px;
+    background-color: #ff0056;
+    border: solid 1px #ff0056;
+  }
+}
+  
+}

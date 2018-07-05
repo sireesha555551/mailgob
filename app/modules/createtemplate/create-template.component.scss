@@ -1,0 +1,53 @@
+@import 'variables';
+@import 'button';
+
+
+.createtemplate-richtext-section {
+  .createtemplate-rich-text-border {
+    // width: 1079.7px;
+    height: 400px;
+    background-color: #f9f9f9;
+    border: solid 1px #979797;
+    box-shadow: inset 0 0 8px 4px rgba(181, 181, 181, 0.5);
+  
+  .createtemplate-border{
+    background-color: #e4e4e4;
+    h3 {
+      padding: 20px;
+    }
+  }
+  h1{
+      text-align: center;
+      color: #999999;
+      margin-top: 130px;
+  }
+  }
+  .m-t-2{
+    margin-top:60px;
+  }
+.createtemplate-savedraft{
+  // button{
+  //   font-size: 24px;
+  //   border-radius: 5px;
+  //   border: solid 1px #ff0056;
+  //   background-color: #ffffff;
+  //   color: black;
+  // }
+}
+.createtemplate-cancel{
+  // button{
+  //   font-size: 24px;
+  //   background-color: #eeeeee;
+  //   border: solid 1px #979797;
+  //   color: black;
+  // }
+}
+.createtemplate-send{
+  // button{
+  //   font-size: 24px;
+  //   border-radius: 5px;
+  //   background-color: #ff0056;
+  //   border: solid 1px #ff0056;
+  // }
+}
+}

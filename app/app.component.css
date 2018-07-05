@@ -1,0 +1,12 @@
+.headerComponent{
+    position: relative;
+    
+}
+.alertComponent{
+    position:fixed;
+    top: 6.2%;
+    width:100%;
+    margin: auto;
+    z-index:2000;
+
+}

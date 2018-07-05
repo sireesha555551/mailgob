@@ -1,0 +1,313 @@
+<div class="contacts-creation-section">
+  <div class="contacts-creation-header">
+    <h2 class="head-section-title">Contacts</h2>
+    <!-- <p>Lorem ipsum dolor sit am consectetur adipiscing elit. Nullam at neque at <br>sapien ornare aliquet nec a lacus.</p> -->
+  </div>
+  <div class="row">
+    <div class="col-sm-2">
+      <h3 class="prograss-limit text-right">0</h3>
+    </div>
+    <div class="col-sm-8">
+      <p class="progressbar-data" [style.left.%]="width">{{statsCount}}</p>
+      <div class="progress">
+        <div class="one primary-color" [style.left.%]="width"></div>
+        <div class="progress-bar" [style.width.%]="width"></div>
+      </div>
+      <p class="progressbar-data text-center">Unique contacts</p>
+    </div>
+    <div class="col-sm-2">
+      <h3 class="prograss-limit">{{endLimit}}</h3>
+    </div>
+  </div>
+  <div class="row m-t-1">
+    <div class="col-sm-3">
+      <span class="contact-filter">
+        <img class="filter-image" src="assets/images/filter.png" height="25" alt="">
+        <div class="contact-filter-select">
+          <mat-form-field>
+            <mat-select placeholder="" [(value)]="selectedFilter" (change)="onContactTypeChange($event,$event.value)">
+              <mat-option value="all">
+                All
+              </mat-option>
+              <mat-option value="inactive">
+                Inactive
+              </mat-option>
+              <mat-option value="active">
+                Active
+              </mat-option>
+              <mat-option value="uploaded">
+                Uploaded
+              </mat-option>
+              <mat-option value="rejected">
+                Rejected
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </span>
+    </div>
+    <div class="col-sm-6">
+      <div class="contacts-creation-search">
+        <input type="text" class="form-control" name="search-box"  (keyup)="contactSearch($event)" placeholder="Search Contact">
+      </div>  
+    </div>
+    <div class="col-sm-3">
+      <button type="button" class="btn btn-primary btn-turtle pull-right" data-toggle="modal" data-target="#contactsImportsModal" (click)="onImportModalClick($event)">
+        Import Contacts
+      </button>
+    </div>
+  </div>
+  
+  <div class="row table-heading-row m-t-1" *ngIf="isDataLoaded" >
+    <div class="col-sm-12">
+      <table *ngIf="!isContactsEmpty" class="contacts-list-table table table-responsive">
+        <tr class="contacts-list-table-heading table-heading">
+          <th class="contact-list-name-heading" style="padding-left:35px">NAME</th>
+          <th class="text-center">DATE</th>
+          <th class="text-center">CONTACTS</th>
+          <th class="text-center">STATUS</th>
+          <th class="text-center">ACTION</th>
+        </tr>
+        <tr class="contacts-select-tr">
+          <td class="contacts-select-All">
+            <span class="contacts-name-input-span">
+              <span *ngIf="!allSelected">
+                <input type="checkbox" (change)="onSelectAll($event.target.checked)"> 
+                <label for="">
+                  Select All   
+                </label>
+              </span>
+              <span *ngIf="allSelected">
+                <input type="checkbox" (change)="onSelectAll($event.target.checked)" checked> 
+                <label for="">
+                  Select All   
+                </label>
+              </span>
+              <label class="delete-button" for="" *ngIf="isAllowToDelete">
+                <a  class="delete-text" (click)="onContactDelete($event)">
+                  Delete  
+                </a>
+              </label>
+              <label class="delete-button" for="" *ngIf="!isAllowToDelete">
+                <!-- Delete   -->
+              </label>
+            </span>
+          </td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td class="contacts-table-info-text">
+            Total Contacts are Sum(Valid, Undetermined)
+          </td>
+        </tr>
+        <tr class="table-body" *ngFor="let contact of allContacts | paginate : { itemsPerPage:10, currentPage:page, id : 1, totalItems: totalItems }">
+          <td class="contacts-name">
+            <!-- <span class="contacts-name-input-span"> -->
+              <span *ngIf="contact.isChecked"  class="contacts-name-input-span">
+                <input type="checkbox" checked (change)="onChange(contact,$event.target.checked)">
+                <label>
+                {{contact?.list_name}}</label>
+              </span>
+              <span *ngIf="!contact.isChecked" class="contacts-name-input-span"> 
+                <input type="checkbox" (change)="onChange(contact,$event.target.checked)" [disabled]="!contact.isAbleToDelete">
+                <label>
+                {{contact?.list_name}}</label>
+                <!-- </span> -->
+              <!-- <input type="checkbox" value=""  (change)="onChange(contact,$event.target.checked)">
+              <label for="">  
+                {{contact.list_name}}
+              </label> -->
+            </span>
+          </td>
+          <td class="contacts-date">{{contact.created_date}}</td>
+          <td class="contacts-header-contact"> 
+            {{contact.contacts_total}}
+          </td>
+          <td class="container-header-contact">
+            {{contact.status}}  
+            <span class="information-tooltip" matTooltip="" matTooltipPosition="above">  <i class="fa fa-info-circle fa-stack"></i></span>
+          </td>
+          <td class="table-dropdown">
+            <div class="dropdown">
+              <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Options
+                <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu">
+                <li><a data-toggle="modal" data-target="#contactsViewModal" (click)="openModal($event,contact)">View</a></li>
+                <li *ngIf="contact.isDownload"><a data-toggle="modal" data-target="#contactsDownloadModal" (click)="openDownloadModal($event,contact)">Download</a></li>
+                <li *ngIf="contact.isAbleToDelete"><a (click)="onSingleDeleteClick($event,contact)">Delete</a></li>
+              </ul>
+            </div>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div class="col-sm-6 col-sm-offset-3">
+      <h3 *ngIf="isContactsEmpty" class="text-center contact-less-data">No contacts list found.</h3>
+    </div>
+  </div>
+  <div class="row" *ngIf="!isContactsEmpty">
+    <div class="col-sm-6 col-sm-offset-3" *ngIf="isPageLoaded">
+      <ul class="pagination">
+        <pagination-controls 
+        (pageChange) = "page = getServerData($event)" 
+        id="1"
+        maxSize = "10"
+        directionLinks = "true"
+        autohide = "true"
+        >
+      </pagination-controls>
+    </ul>
+  </div>
+</div>
+<div class="row" *ngIf="!isDataLoaded">
+  <div class="col-sm-6 col-sm-offset-3 spinner">
+    <span class="text-center">
+      <i class="fa fa-spinner fa-spin" style="font-size:50px"></i>
+    </span>
+    <span class="text-center">
+      <p>Loading....</p>
+    </span>
+  </div>
+</div>
+<!-- </div> -->
+</div>
+
+<div class="modal bd-example-modal-md fade" id="contactsImportsModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-md imports-contact-modal">
+    <div class="modal-content">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+      <div class="modal-header">
+        <div *ngIf="isFormError">
+          <!-- <app-alerts></app-alerts> -->
+        </div>
+        <h2>Import your contacts</h2>
+        <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus incidunt laboriosam vel ea, cumque perspiciatis sit assumenda voluptatibus modi nihil cupiditate aliquid minus fugit tenetur soluta ab enim quia optio?</p> -->
+      </div>
+      <form action="" [formGroup]="addContactFormGroup" #addContactsForm="ngForm" (ngSubmit)="onContactUpload(addContactsForm)">
+        <div class="modal-body">
+          <div class="form-froup">
+            <label for="">List Name</label>
+            <input type="text" formControlName="contactlist_name" class="form-control">
+          </div>
+          <br>
+          <div class="form-group add-contacts-dropzone">
+            <ng2-file-input [id]="myFileInputIdentifier" (onInvalidDenied)="onInvalidDenied($event)" [multiple]="false" (onRemoved)="onRemoved($event)" (onAdded)="onAdded($event)" (onAction)="onAction($event)" extensions="['csv','xls', 'xlsx', 'xslm','xslb', 'xlt', 'xps']" [drop-text]="' '" [browse-text]="'Drop file here or click to upload'" [remove-text]="'x'"></ng2-file-input> 
+
+            <!-- <ng2-file-input [id]="CustomTextsJPGOnlyInput" (onInvalidDenied)="onInvalidDenied($event)" [multiple]="false" (onRemoved)="onRemoved($event)" (onAdded)="onAdded($event)" (onAction)="onAction($event)" extensions="['csv','xls', 'xlsx', 'xslm','xslb', 'xlt', 'xps']" [drop-text]="' '" [browse-text]="'Drop file here or click to upload'" [remove-text]="'x'"></ng2-file-input> -->
+            <!-- <input type="file" (change)="fileChange($event)" name="file" id="file" accept="">
+            <label for="file">Drop file here or click to upload</label>
+            <span *ngIf="isFileUploaded">
+              <p>{{fileName}}</p>
+            </span> -->  
+            <!-- <kendo-upload
+            [saveUrl]="uploadSaveUrl"
+            [multiple]="false"
+            (upload)="uploadEventHandler($event)"
+            (select)="selectEventHandler($event)">
+          </kendo-upload> -->   
+        </div>
+        <a class="sample-download" target="_blank" href="https://s3-us-west-2.amazonaws.com/mailgobdev/sample.csv" (click)="onSampleDownload($event)">Sample?</a>
+        <p class="file-types">*upload csv, xls formats only</p>
+        <p class="file-types">* uploaded list should have a column "email"</p>
+        <p class="file-types">*"email" is case sensitive</p>
+        <div class="form-group">
+          <span class="terms-accepted">
+            <input type="checkbox" (change)="onChangeTerms($event.target.checked)" [checked]="isTermsAccepted">
+            <label for="">
+              Yes, I agree to the Mailgob
+              <a class="signup-conditions" target="_blank" href="https://mailgob.com/termsconditions.html">Terms and conditions</a>
+            </label>
+          </span>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <a target="_blank" href="https://emailexist.com" class="email-exist-link">Powered by EmailExist.com</a>
+        <button type="button" class="btn btn-secondary pull-right"  (click)="onCloseImportHandled()">Close</button>
+        <button type="submit" class="btn btn-secondary pull-right m-r-1" [disabled]=!isTermsAccepted>Import</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+
+</div>
+<!-- Modal for view contact stats -->
+<div class="modal bd-view-stats-model fade" id="contactsViewModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <div class="modal-header">
+        <span>
+          <label for="">Name:</label>
+          <p>{{contactStatsData?.list_name}}</p>
+        </span>
+        <span>
+          <label for="">
+            Status: 
+          </label>
+          <p>
+            {{contactStatsData?.status}}
+          </p>
+        </span>
+      </div>      
+      <div class="modal-body">
+        <table class="table table-responsive">
+          <tr>
+            <th>Valid</th>
+            <th>Invalid</th>
+            <th>Unverified</th>
+            <th>Unsubscribed</th>
+            <th>Undetermined</th>
+          </tr>
+          <tr>
+            <td>{{contactStatsData?.stats.valid}}</td>
+            <td>{{contactStatsData?.stats.invalid}}</td>
+            <td>{{contactStatsData?.stats.unverified}}</td>
+            <td>{{contactStatsData?.stats.unsubscribed}}</td>
+            <td>{{contactStatsData?.stats.undetermined}}</td>
+          </tr>
+        </table>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary btn-sm pull-right close" data-dismiss="modal" aria-label="Close" >Close</button>
+        <!-- <button type="submit" class="btn btn-secondary pull-right m-r-1 btn-sm">Download</button> -->
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal !-->
+
+<div class="modal bd-downloads-model" id="contactsDownloadModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <button type="button" class="close" aria-label="Close" data-dismiss="modal"><span aria-hidden="true">&times;</span></button>
+      <div class="modal-header">
+        <h4>Download List</h4>
+      </div>      
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-sm-6 text-center">
+            <a class="image-link">
+              <img height= "125" src="assets/images/verified1.png" alt="" (click)="onDownloadCSV($event, 'legitimate')">
+            </a>
+            <br>                            
+            <a class="contacts-download-link" (click)="onDownloadCSV($event, 'legitimate')">Legitimate</a>
+          </div>
+          <div class="col-sm-6 text-center">
+            <a class="image-link">
+              <img height= "125" src="assets/images/unverified1.png" alt="" (click)="onDownloadCSV($event, 'illegitimate')">
+            </a>
+            <br>
+            <a class="contacts-download-link" (click)="onDownloadCSV($event , 'illegitimate')">Illegitimate</a>
+          </div>
+        </div>
+      </div>
+     <!--  <div class="modal-footer">
+        <button type="button" class="btn btn-secondary btn-sm pull-right" (click)="onCloseDownloadHandled()" >Close</button>
+      </div> -->
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal !-->
+

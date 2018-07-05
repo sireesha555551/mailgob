@@ -1,0 +1,456 @@
+<div class="campaign-creation-section">
+  <div class="container-fluid">
+    <div class="campaign-creation-top">
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="campaign-name">
+            <h4>{{info?.name}}
+              <!-- <i class="fa fa-edit"></i> -->
+            </h4>
+            <p>{{info?.created_on | date:'d MMM y'}}</p>
+          </div>
+        </div>
+        <div class="col-sm-6 text-right">
+          <div class="campaign-name-editing">
+            <!-- <span>
+              <i class="fa fa-share-square"></i>
+              <i class="fa fa-trash"></i>
+            </span> -->
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="campaign-name-creation-border">
+          </div>
+        </div>
+      </div>
+      <div class="row p-t-1">
+        <div class="col-sm-6">
+          <div class="campaign-subject">
+            <p>Subject : {{info?.subject}}</p>
+            <p>No of contact lists : {{contacts_stats}}</p>
+          </div>
+        </div>
+        <!-- <div class="col-sm-3">
+          <p>Template
+            <i class="fa fa-eye"></i>
+          </p>
+        </div> -->
+        <div class="col-sm-3">
+          <p>From: {{info?.from_email}}</p>
+        </div>
+        <div class="col-sm-3 text-right">
+          <p>Reply-to: {{info?.reply_to}}</p>
+        </div>
+      </div>
+    </div>
+    <div class="campaign-creation-graph">
+      <div class="row">
+        <div class="col-sm-4">
+          <div class="campaign-creation-graph-section">
+            <div class="row">
+              <div class="col-sm-12 campaign-red-position">
+                <div class="unsubscribe-percent" data-progress="0">
+                  <div class="ko-circle">
+                    <div class="full ko-progress-circle__slice">
+                      <div class="ko-progress-circle__fill"></div>
+                    </div>
+                    <div class="ko-progress-circle__slice">
+                      <div class="ko-progress-circle__fill"></div>
+                      <div class="ko-progress-circle__fill ko-progress-circle__bar"></div>
+                    </div>
+                  </div>
+                  <div class="ko-progress-circle__overlay"></div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-12 campaign-blue-position">
+                <div class="campaign-graph-circle-blue">
+                  <div class="bounced-percent" data-progress="0">
+                    <div class="ko-circle">
+                      <div class="full ko-progress-circle__slice">
+                        <div class="ko-progress-circle__fill"></div>
+                      </div>
+                      <div class="ko-progress-circle__slice">
+                        <div class="ko-progress-circle__fill"></div>
+                        <div class="ko-progress-circle__fill ko-progress-circle__bar"></div>
+                      </div>
+                    </div>
+                    <div class="ko-progress-circle__overlay"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-12 campaign-orange-position">
+                <div class="campaign-graph-circle-orange">
+                  <div class="opened-percent" data-progress="0">
+                    <div class="ko-circle">
+                      <div class="full ko-progress-circle__slice">
+                        <div class="ko-progress-circle__fill"></div>
+                      </div>
+                      <div class="ko-progress-circle__slice">
+                        <div class="ko-progress-circle__fill"></div>
+                        <div class="ko-progress-circle__fill ko-progress-circle__bar"></div>
+                      </div>
+                    </div>
+                    <div class="ko-progress-circle__overlay"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-12 campaign-skyblue-position">
+                <div class="campaign-graph-circle-skyblue">
+                  <div class="delivered-percent" data-progress="0">
+                    <div class="ko-circle">
+                      <div class="full ko-progress-circle__slice">
+                        <div class="ko-progress-circle__fill"></div>
+                      </div>
+                      <div class="ko-progress-circle__slice">
+                        <div class="ko-progress-circle__fill"></div>
+                        <div class="ko-progress-circle__fill ko-progress-circle__bar"></div>
+                      </div>
+                    </div>
+                    <div class="ko-progress-circle__overlay"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="campaign-creation-data-status">
+              <div class="row">
+                <div class="col-sm-2">
+                  <span class="dot deliver-color"></span>
+                </div>
+                <div class="col-sm-4 status">
+                  <p>Delivered</p>
+                </div>
+                <div class="col-sm-6 text-right">
+                  <p>{{deliveredPercent}}%</p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-2">
+                  <span class="dot opened-color"></span>
+                </div>
+                <div class="col-sm-4 status">
+                  <p>Opened</p>
+                </div>
+                <div class="col-sm-6 text-right">
+                  <p>{{openedPercent}}%</p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-2">
+                  <span class="dot bounced-color"></span>
+                </div>
+                <div class="col-sm-4 status">
+                  <p>Bounced</p>
+                </div>
+                <div class="col-sm-6 text-right">
+                  <p>{{campaign_stats.total_bounced}}%</p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-2">
+                  <span class="dot unsubscribe-color"></span>
+                </div>
+                <div class="col-sm-4 status">
+                  <p>Unsubscribed</p>
+                </div>
+                <div class="col-sm-6 text-right">
+                  <p>{{unsubscribePercent}}%</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-8">
+          <div class="campaign-creation-contact-list">
+            <div class="row">
+              <div class="col-sm-12">
+                <div class="campaign-creation-performance">
+                  <h4 class="text-center">Performance</h4>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-12">
+                <div class="campaign-creation-tabs">
+                  <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                    <li class="nav-item">
+                      <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home"
+                      aria-selected="true" style="font-weight: bold;">Contact list</a>
+                    </li>
+                    <li class="nav-item" hidden>
+                      <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile"
+                      aria-selected="false"></a>
+                    </li>
+                  </ul>
+                  <div class="tab-content" id="pills-tabContent">
+                    <div class="tab-pane fade active in" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+                      <div class="campaign-contact-creation-tab">
+                        <div class="row contact-list-onclick" *ngFor="let key of contactList" (click)="onContactListClick($event, key)">
+                          <div class="col-sm-8">
+                            <h5>{{key.contactlist_name}}</h5>
+                            <p>{{key.created_on | date:'d MMM y'}}</p>
+                          </div>
+                              <div class="col-sm-3">
+                                <div class="progress-width">
+                                  <div class="progress" id="contactlist">
+                                    <div class="progress-bar" id="width" *ngIf="key.isShow">
+                                      <div class="progress-shadow">
+                                      </div>
+                                    </div>
+                                    <div class="progress-bar" *ngIf="!key.isShow">
+                                      <div class="progress-shadow">
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="progress-arrow" *ngIf="key.isShow">                                
+                                    <i class="fa fa-caret-up"
+                                    [ngStyle]="{'left':key.efective_percentage}"> 
+                                    </i>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="row">
+                              <div class="col-sm-12">
+                                <div class="campaign-contact-border"></div>
+                              </div>
+                            </div>
+                              <div class="row" *ngIf="key.isShow">
+                                <div class="col-sm-12">
+                                  <div class="campaign-creation-hover-popup">
+                                    <div class="card" id="card" #card>
+                                      <div class="row">
+                                        <div class="col-sm-1"></div>
+                                        <div class="col-sm-1 padding-zero width">
+                                          <span class="dot deliver-color"></span>
+                                        </div>
+                                        <div class="col-sm-2 padding-zero">
+                                          <p>Delivered</p>
+                                        </div>
+                                        <div class="col-sm-1 padding-zero">
+                                          <h5>{{key.deliveredPercent}}%</h5>
+                                        </div>
+                                        <div class="col-sm-2"></div>
+                                        <div class="col-sm-1 padding-zero width">
+                                          <span class="dot opened-color"></span>
+                                        </div>
+                                        <div class="col-sm-2 padding-zero">
+                                          <p>Opened</p>
+                                        </div>
+                                        <div class="col-sm-1 text-right padding-zero">
+                                          <h5>{{key.openedPercent}}%</h5>
+                                        </div>
+                                        <div class="col-sm-1"></div>
+                                      </div>
+                                      <div class="campaign-creation-popover-bounced">
+                                        <div class="row">
+                                          <div class="col-sm-1"></div>
+                                          <div class="col-sm-1 padding-zero width">
+                                            <span class="dot bounced-color"></span>
+                                          </div>
+                                          <div class="col-sm-2 padding-zero">
+                                            <p>Bounced</p>
+                                          </div>
+                                          <div class="col-sm-1 padding-zero">
+                                            <h5>{{key.bouncedPercent}}%</h5>
+                                          </div>
+                                          <div class="col-sm-2"></div>
+                                          <div class="col-sm-1 padding-zero width">
+                                            <span class="dot unsubscribe-color"></span>
+                                          </div>
+                                          <div class="col-sm-2 padding-zero">
+                                            <p>Unsubscribed</p>
+                                          </div>
+                                          <div class="col-sm-1 text-right padding-zero">
+                                            <h5>{{key.unsubscribePercent}}%</h5>
+                                          </div>
+                                          <div class="col-sm-1"></div>
+                                        </div>
+                                      </div>
+                                      <div class="campaign-creation-total">
+                                        <div class="row">
+                                          <div class="col-sm-6">
+                                            <h5>Total</h5>
+                                          </div>
+                                          <div class="col-sm-6">
+                                            <h5>{{key.totalEmail}}
+                                              <span>Emails</span>
+                                            </h5>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab" hidden>
+                          <div class="campaign-email-creation-tab" hidden>
+                            <div class="row">
+                              <div class="col-sm-6"></div>
+                              <div class="col-sm-3">
+                                <h5 class="text-center">Tracked</h5>
+                              </div>
+                              <div class="col-sm-3">
+                                <h5 class="text-center">Untracked</h5>
+                              </div>
+                            </div>
+                            <div class="row">
+                              <div class="col-sm-12">
+                                <div class="email-tab-table-border">
+                                </div>
+                              </div>
+                            </div>
+                            <div class="row">
+                              <div class="col-sm-6">
+                                <h5>
+                                  lorem_ipsun@mailgob.com
+                                </h5>
+                                <p>08 Dec, 2017 20:50</p>
+                              </div>
+                              <div class="col-sm-3">
+                                <h5 class="text-center">55</h5>
+                              </div>
+                              <div class="col-sm-3">
+                                <h5 class="text-center">-</h5>
+                              </div>
+                              <div class="row">
+                                <div class="col-sm-12">
+                                  <div class="email-tab-border-bottom"></div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="row">
+                              <div class="col-sm-6">
+                                <h5>
+                                  lorem_ipsun@mailgob.com
+                                </h5>
+                                <p>08 Dec, 2017 20:50</p>
+                              </div>
+                              <div class="col-sm-3">
+                                <h5 class="text-center">55</h5>
+                              </div>
+                              <div class="col-sm-3">
+                                <h5 class="text-center">-</h5>
+                              </div>
+                              <div class="row">
+                                <div class="col-sm-12">
+                                  <div class="email-tab-border-bottom"></div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="row">
+                              <div class="col-sm-6">
+                                <h5>
+                                  lorem_ipsun@mailgob.com
+                                </h5>
+                                <p>08 Dec, 2017 20:50</p>
+                              </div>
+                              <div class="col-sm-3">
+                                <h5 class="text-center">55</h5>
+                              </div>
+                              <div class="col-sm-3">
+                                <h5 class="text-center">-</h5>
+                              </div>
+                              <div class="row">
+                                <div class="col-sm-12">
+                                  <div class="email-tab-border-bottom"></div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="row">
+                              <div class="col-sm-6">
+                                <h5>
+                                  lorem_ipsun@mailgob.com
+                                </h5>
+                                <p>08 Dec, 2017 20:50</p>
+                              </div>
+                              <div class="col-sm-3">
+                                <h5 class="text-center">55</h5>
+                              </div>
+                              <div class="col-sm-3">
+                                <h5 class="text-center">-</h5>
+                              </div>
+                              <div class="row">
+                                <div class="col-sm-12">
+                                  <div class="email-tab-border-bottom"></div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="row">
+                              <div class="col-sm-6">
+                                <h5>
+                                  lorem_ipsun@mailgob.com
+                                </h5>
+                                <p>08 Dec, 2017 20:50</p>
+                              </div>
+                              <div class="col-sm-3">
+                                <h5 class="text-center">55</h5>
+                              </div>
+                              <div class="col-sm-3">
+                                <h5 class="text-center">-</h5>
+                              </div>
+                              <div class="row">
+                                <div class="col-sm-12">
+                                  <div class="email-tab-border-bottom"></div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="row">
+                              <div class="col-sm-6">
+                                <h5>
+                                  lorem_ipsun@mailgob.com
+                                </h5>
+                                <p>08 Dec, 2017 20:50</p>
+                              </div>
+                              <div class="col-sm-3">
+                                <h5 class="text-center">55</h5>
+                              </div>
+                              <div class="col-sm-3">
+                                <h5 class="text-center">-</h5>
+                              </div>
+                              <div class="row">
+                                <div class="col-sm-12">
+                                  <div class="email-tab-border-bottom"></div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="row">
+                              <div class="col-sm-6">
+                                <h5>
+                                  lorem_ipsun@mailgob.com
+                                </h5>
+                                <p>08 Dec, 2017 20:50</p>
+                              </div>
+                              <div class="col-sm-3">
+                                <h5 class="text-center">55</h5>
+                              </div>
+                              <div class="col-sm-3">
+                                <h5 class="text-center">-</h5>
+                              </div>
+                              <div class="row">
+                                <div class="col-sm-12">
+                                  <div class="email-tab-border-bottom"></div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>

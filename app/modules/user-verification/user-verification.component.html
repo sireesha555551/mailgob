@@ -1,0 +1,33 @@
+<div class="resend-verification-section">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<div class="resend-link-content">
+				<img src="assets\images\alart.png">
+				<h4>{{message}}</h4>
+				<p>If you did not get activation link click to Resend</p>
+				<a class="resend-link" (click)="onResendVerifyEmail($event)">Resend</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- <div class="col-sm-6 col-sm-offset-3">
+				<div class="card">
+					<div class="resend-head-section">
+						<span class="resend-icon">
+							<i *ngIf="!isLog" class="fa fa-check fa-3x"></i>
+      						<i *ngIf="isLog" class="fa fa-exclamation-triangle fa-3x"></i>
+						</span>
+					</div>
+					<div class="resend-body-content">
+						<h4 class="resend-title text-center">{{message}}</h4>
+					</div>
+					<div class="resend-footer">
+						<a class="back-link" (click)="onBackClick($event)">
+							Back to login
+						</a>
+						<a class="resend-link" (click)="onResendVerifyEmail($event)">Resend Verification</a>
+					</div>
+				</div>
+			</div> -->

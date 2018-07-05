@@ -1,0 +1,74 @@
+@import 'variables';
+@import 'button';
+
+.stepper-creation-section {
+  .stepper-creation-color {
+    //   background-color: #28c802;
+    // width: 60%;
+    /* text-align: center; */
+    /* float: left; */
+    // margin-left: 214px;
+    h2 {
+      padding-bottom: 30px;
+    }
+  }
+  .stepper-creation-content{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+   ::ng-deep .mat-step-header .mat-step-icon {
+    background-color: #28c802;
+    color: rgba(255, 255, 255, .87);
+  }
+   ::ng-deep .mat-form-field-underline {
+    width: 100%;
+  }
+  .stepper-color {
+    background-color: #28c802;
+  }
+  .mat-form-field-flex {
+    padding-top: 20px;
+  }
+  .mycampaign-creation-next {
+    .btn{
+        width: 250px;
+        height: 60px;
+        margin: 65px;
+    }
+  }
+  input{
+    border: none;
+  }
+}
+::ng-deep .mat-horizontal-stepper-header-container{
+  width: 75%;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  margin: 0 auto;
+  .mat-horizontal-stepper-header{
+    &:hover{
+      background-color: $white-color;
+    }
+  }
+}
+::ng-deep .mat-horizontal-stepper-content{
+  justify-content: center;
+  align-items:center;
+  display: flex;
+}
+.stepper-tabs{
+  width: 100%;
+}
+.mat-input-container{
+  width: 100% !important;
+  ::ng-deep .mat-form-field-infix{
+    display: flex;
+  }
+}
+
+.fa-stack{
+  width: 13px;
+  height: 14px;
+}

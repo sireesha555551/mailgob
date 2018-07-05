@@ -1,0 +1,184 @@
+<div class="settings-creation-section">
+  <!-- <app-alerts></app-alerts> -->
+  <div class="settings-header">
+    <h3 class="head-section-title">Settings</h3>
+  </div>
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="profile-image-section">
+        <div class="profile-image-card">
+          <div class="image-div" *ngIf="isProPic">
+            <img [src]="userproPic" alt="">
+          </div>
+          <div class="ng-image-div">
+            <ng2-file-input [id]="'CustomTextsJPGOnlyInput'" (onInvalidDenied)="onInvalidDenied($event)" [multiple]="false" (onRemoved)="onRemoved($event)" (onAdded)="onAdded($event)" (onAction)="onAction($event)" extensions="['jpg','jpeg', 'png']" [drop-text]="' '" [browse-text]="'Upload'" [remove-text]="'x'"></ng2-file-input>
+          </div>
+        </div>
+        <div class="profile-user-id">
+          <p class="user-id">{{ref_code}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12 p-0">
+      <div class="settings-form-creation">
+        <div class="panel with-nav-tabs panel-default">
+          <div class="panel-heading">
+            <!-- <img src="/assets/images/profile.jpg"> -->
+            <ul class="nav nav-tabs">
+              <!-- <li class="">
+                <a href="#tab1default" data-toggle="tab">Deactivate Account</a>
+              </li> -->
+              <li class="settings-changepwd">
+                <a href="#tab2default" data-toggle="tab">Change Password</a>
+              </li>
+              <li class="active setting-account">
+                <a href="#tab3default" data-toggle="tab">My Account</a>
+              </li>
+            </ul>
+          </div>
+          <!-- <img src="/assets/images/profile.jpg"> -->
+
+          <div class="panel-body">
+            <div class="tab-content">
+              <div class="tab-pane fade" id="tab1default">Default 1</div>
+              <div class="tab-pane fade" id="tab2default">
+                <div class="password-set-tab">
+                  <form class="example-form" [formGroup]="resetPasswordForm" #changePasswordForm="ngForm" (ngSubmit)="changePassword(changePasswordForm)">
+                    <!-- <form class="example-form" [formGroup]="resetPasswordForm"> -->
+                    <div class="form-group current-password col-sm-12">
+                      <mat-form-field class="example-full-width">
+                        <input type="password" name="current_password" matInput placeholder="Current Password" formControlName="current_password"
+                          (focusout)="currentPassword($event)" [readonly]="isMatched">
+                      </mat-form-field>
+                    </div>
+                    <span *ngIf="errorHide">
+                      <span class="password-alert" *ngIf="isMatched">
+                        <!-- <i class="fa fa-check" aria-hidden="true"></i> -->
+                        <p class="password-check"><i class="fa fa-check" aria-hidden="true"></i></p>
+                      </span>
+                      <span class="password-alert-error" *ngIf="!isMatched">
+                        <!-- <i class="fa fa-times" arial-hidden="false"></i> -->
+                        <p class="password-error"><i class="fa fa-times" arial-hidden="false"></i></p>
+                      </span>
+                    </span>
+                    <!-- <span  class="password-alert" *ngIf="!isMatched"><i class="fa fa-check" aria-hidden="true"></i><p class="password-check">Matched</p></span> -->
+                    <div class="form-group col-sm-12">
+                      <mat-form-field class="example-full-width">
+                        <input type="password" name="new_password" matInput placeholder="New password" formControlName="new_password" [readonly]="!isMatched">
+                      </mat-form-field>
+                    </div>
+                    <div class="form-group col-sm-12">
+                      <mat-form-field class="example-full-width">
+                        <input type="password" name="confirm_password" matInput placeholder="Confirm Password" formControlName="confirm_password"
+                          [readonly]="!isMatched">
+                      </mat-form-field>
+                    </div>
+                    <div class="row">
+                      <div class="col-sm-11 text-right">
+                        <button type="submit" class="btn btn-primary">Save</button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+              <div class="tab-pane fade in active" id="tab3default" style="text-align:center">
+                <form [formGroup]="Form" #userInfoForm="ngForm" (ngSubmit)="onSubmit(userInfoForm)">
+                  <div class="user-profile-info">
+                    <div class="form-group col-sm-6">
+                      <mat-form-field class="example-full-width">
+                        <input name="first_name" matInput placeholder="First Name" formControlName="new_firstname" [readonly]="!isEdit">
+                      </mat-form-field>
+                    </div>
+                    <div class="form-group col-sm-6">
+                      <mat-form-field class="example-full-width">
+                        <input name="last_name" matInput placeholder="Last Name" formControlName="new_secondname" [readonly]="!isEdit">
+                      </mat-form-field>
+                    </div>
+                    <div class=" form-group col-sm-12">
+                      <mat-form-field class="input-full-width">
+                        <input matInput placeholder="Email Address" formControlName="email" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"
+                          [readonly]="true">
+                      </mat-form-field>
+                    </div>
+                    <div class="form-group col-sm-12">
+                      <mat-form-field class="example-full-width">
+                        <input matInput placeholder="address 1" formControlName="new_address1" [readonly]="!isEdit">
+                      </mat-form-field>
+                    </div>
+                    <div class="form-group col-sm-12">
+                      <mat-form-field class="example-full-width">
+                        <input matInput placeholder="address 2" formControlName="new_address2" [readonly]="!isEdit">
+                      </mat-form-field>
+                    </div>
+                    <!-- <div class="settings-creation-email"> -->
+                    <!-- </div> -->
+                    <div class="col-sm-6 form-group">
+                      <mat-form-field class="example-full-width">
+                        <mat-select placeholder="Country" [(value)]="selected" required [disabled]="!isEdit"  (change)="onChangeCountry($event, $event.value)">
+                          <mat-option *ngFor="let country of countries" [value]="country.name">
+                            {{ country.name }}
+                          </mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                    </div>
+                    <div class="col-sm-6 form-group">
+                      <mat-form-field class="example-full-width">
+                        <mat-select placeholder="Choose State" [(value)]="selectedState" 
+                        (change)="onStateChange($event,$event.value)"[disabled]="!isEdit">
+                          <mat-option *ngFor="let state of states" [value]="state.name">
+                            {{ state.name }}
+                          </mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                    </div>
+                    <div class="form-group col-sm-6">
+                      <mat-form-field class="example-full-width">
+                        <input matInput placeholder="City" formControlName="new_city" [readonly]="!isEdit">
+                      </mat-form-field>
+                    </div>
+                    <div class="form-group col-sm-6">
+                      <mat-form-field class="example-full-width">
+                        <input matInput placeholder="zip code" formControlName="new_zip" [readonly]="!isEdit">
+                      </mat-form-field>
+                    </div>
+                    <div class="form-group col-sm-6">
+                      <mat-form-field class="example-full-width">
+                        <input matInput placeholder="Mobile" formControlName="new_contactnumber" [readonly]="!isEdit">
+                      </mat-form-field>
+                    </div>
+                    <div class="col-sm-6 form-group">
+                      <mat-form-field class="input-full-width">
+                        <input type="text" matInput placeholder="company name" formControlName="new_companyname" [readonly]="!isEdit">
+                      </mat-form-field>
+                    </div>
+                  </div>
+                  <div class="m-t-1">
+                    <div class="col-sm-4">
+                      <div class="settings-creation-deactivate">
+                        <p>Deactivate ?</p>
+                      </div>
+                    </div>
+                    <div class="col-sm-4">
+                    </div>
+                    <div class="col-sm-4">
+                      <div class="settings-creation-edit-button" *ngIf="!isEdit">
+                        <button type="button" class="btn btn-primary" (click)="onEditClick($event)">Edit</button>
+                      </div>
+                      <div *ngIf="isEdit">
+                        <button type="submit" class="btn btn-primary">Save</button>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+              <div class="tab-pane fade" id="tab4default">Default 4</div>
+              <div class="tab-pane fade" id="tab5default">Default 5</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

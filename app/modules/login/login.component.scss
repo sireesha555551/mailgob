@@ -1,0 +1,245 @@
+@import 'variables';
+@import 'button';
+@import 'common';
+.login-section-creation{
+  #login-section-header{
+    border-bottom: 1px solid #dfe3e6;
+    padding-bottom: 10px;
+  }
+  .login-section-background{
+    img{
+      // position: inherit;
+      float:right; 
+      height:460px;
+      // margin-top: -6%;
+    }
+  }
+  input{
+    border: none;
+  }
+  .login-section-card{
+    ::ng-deep mat-card{
+      margin-top: 140px;
+      margin-left: 5%;
+      border-radius: 10px;
+      position: absolute;
+      width: 500px;
+      box-shadow: 7px 7px 7px 7px rgba(68, 68, 68, 0.5);
+      padding: 0px;
+      margin-bottom: 30px;
+      min-height: 700px;
+      ::ng-deep .mat-tab-label{
+        width: 50%;
+        height: 60px;
+      }
+      ::ng-deep  #mat-tab-label-0-1{
+        border-top-right-radius: 10px;
+      }
+      ::ng-deep #mat-tab-label-0-0{
+        border-top-left-radius: 10px;
+      }
+      ::ng-deep  #mat-tab-label-1-1{
+        border-top-right-radius: 10px;
+      }
+      ::ng-deep #mat-tab-label-1-0{
+        border-top-left-radius: 10px;
+      }
+      ::ng-deep  #mat-tab-label-2-1{
+        border-top-right-radius: 10px;
+      }
+      ::ng-deep #mat-tab-label-2-0{
+        border-top-left-radius: 10px;
+      }
+      ::ng-deep .mat-tab-label-active{
+        background-color: #002234;
+        opacity: 1;
+        color: $white-color;
+        font-weight: bold;
+      }
+      ::ng-deep .mat-tab-group.mat-primary .mat-tab-label:focus{
+        background-color: #002234;
+        color:$white-color;
+        opacity: 1;
+        font-weight: bold;
+      }
+      ::ng-deep .mat-ripple-element{
+        &:active, &:focus, &:visited {
+          background-color: transparent;
+        }
+      }
+      ::ng-deep .mat-ink-bar{
+        background-color: transparent;
+      }
+      ::ng-deep .mat-tab-body-content {
+        padding: 40px;
+        h3{
+          font-size: 24px;
+          color: $primary-color;;
+          opacity: 0.9;
+          margin-top: 0;
+        }
+        .form-group{
+          margin-bottom: 8px;
+        }
+        .mat-form-field{
+          width: 100%;
+        }
+        .signup-form{
+          display: inline-flex;
+          input{
+            margin-top: 5px;
+          }
+          label{
+            margin-top: 5px;
+            margin-left: 15px;
+            color: #8e8a8a;
+            .signup-conditions{
+              color: $primary-button-hover-color;
+            }
+          }
+        }
+        .signup-button{
+          text-align: center;
+          .btn{
+            width: 150px;
+            margin-top: 20px;
+          }
+        }
+      }
+      .login-creation-form{
+        text-align: center;
+        img{
+          height: 120px;
+        }
+      }
+      .login-creation-inputs{
+        margin-top: 30px;
+        mat-form-field{
+          ::ng-deep .mat-form-field-wrapper{
+            width: 80%;
+            margin: 0 auto;
+          }
+        }
+        .login-forgot {
+          .forgot-password-text{
+            color: $input-placeholder-text;
+            margin-bottom: 25px;
+          }
+        }
+        .btn{
+          margin-top: 25px;
+          margin-bottom: 25px;
+        }
+      }
+      .captcha{
+        margin-top: 20px;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+      }
+    }
+  }
+}
+.login-background-row{
+  min-height: 500px;
+  background-color: $div-bg-color;
+  @include largeScreen{
+    min-height: 750px;
+  }
+}
+
+
+
+
+
+
+#forgotPasswordModel{
+  border-radius: 10px;
+  box-shadow: 0 0 40px 10px rgba(140, 140, 140, 0.5);
+  .forgot-password-content{
+    h5{
+      text-align: center;
+      margin-top: 60px;
+      font-size: 20px;
+    }
+    p{
+      text-align: center;
+    }
+  } 
+  input{
+    width: 80%;
+    border:none;
+    border-bottom: solid 1px #979797;
+    margin-top:10%;
+    margin-left:10%;
+    margin-bottom: 50px;
+    &:hover{
+      border: none;
+      border-bottom: solid 1px #3e8dd1;
+    }
+    &:focus{
+      border: none;
+      outline: none;
+      border-bottom: solid 1px #3e8dd1;
+    }
+  }
+  .btn{
+    width: 200px;
+    height: 50px;
+  }
+}
+@media screen and (max-width: 767px){
+  .card{
+    width: 350px;
+    margin-top:30%;
+  }
+}
+.robot-error-message{
+  position: absolute;
+  top:20%;
+  left: 34%;
+  text-align: center;
+  z-index: 100;
+    .card{
+      padding: 20px;
+      width: 400px;
+      height: 300px;
+      margin: 0 auto;
+      border-radius: 10px;
+      border:solid 1px #c5c5c5;
+      background-color: #ffffff;
+      img{
+        padding-top: 30px;
+      }
+      p{
+        padding-top: 10px;
+      }
+    }
+}
+
+.bd-resend-password-model{
+  margin-top: 6em;
+  .modal-header{
+    .fa-check{
+      color: $alert-success-color;
+    }
+    .fa-exclamation-triangle{
+      color: $alert-error-color
+    }
+  }
+  .modal-body{
+    text-align: center;
+    a{
+      justify-content: center;
+      align-items:center;
+      display: flex;
+      color: $primary-button-hover-color;
+    }
+  }
+}
+.btn{
+  font-size: 20px;
+}
+
+//ggh
+

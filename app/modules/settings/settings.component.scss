@@ -1,0 +1,244 @@
+@import "variables";
+@import "button";
+
+.settings-creation-section {
+  .settings-header {
+    h3 {
+      text-align: center;
+    }
+  }
+  .profile-image-section{
+    position: relative;
+    .profile-image-card{
+      height: 150px;
+      width: 150px;
+      border-radius: 50%;
+   
+      border: 1px solid $button-second-color;
+      position: absolute;
+      z-index: 55;
+      margin-left: 6%;
+      background-color: $input-border-color;
+      .image-div{
+        background: -webkit-linear-gradient(yellow, orange);
+        background: -o-linear-gradient(yellow, orange);
+        background: linear-gradient(yellow, orange);
+        height: 150px;
+        width: 150px;
+        border-radius: 50%;
+      }
+      img{
+        border-radius: 50%;
+        height: 140px;
+        width: 140px; 
+        position: absolute;
+        top: 5px; 
+        left: 5px;
+      }
+      &:hover{
+        // opacity: 0.8;
+        // background-color: rgba(27, 21, 21, 0.7);
+        img{
+          -webkit-filter: blur(2px);
+          filter: blur(2px);
+        }
+        ::ng-deep .btn{
+          display: block;
+          z-index: 99;
+          position: absolute;
+          background-color: transparent;
+          border:  none;
+          top: 37%;
+          left: 25%;
+          opacity: 1;
+          font-size: 16px;
+          font-weight: bold;
+        }
+        ::ng-deep .ng2-file-input-file{
+          img{
+            -webkit-filter: blur(2px);
+            filter: blur(2px);
+          }
+        }
+      }
+    }
+    .profile-user-id{
+      text-align: center;
+      margin-top: 30px;
+      position: absolute;
+      top: 150px;
+      left: 7%;
+      z-index: 60;
+      .user-id{
+        font-size: 16px;
+        font-weight: bold;
+        color: $anchor-link-color;
+
+      }
+
+    }
+    ::ng-deep ng2-file-input{
+      input[type="file"] {
+        display: none;
+      }
+      .ng2-file-input-drop-container{
+        .btn{
+          display: none;
+          position: absolute;
+          background-color: transparent;
+          border:  none;
+          top: 37%;
+          left: 25%;
+          &:hover{
+            display: block;
+            position: absolute;
+            background-color: transparent;
+            border:  none;
+            top: 37%;
+            left: 25%;
+          }
+        }
+      }
+      .ng2-file-input-file-text{
+        display: none;
+      }
+      img{
+        border-radius: 50%;
+        height: 140px;
+        width: 140px; 
+        position: absolute;
+        top: 5px;
+        background: linear-gradient(#fad961, #f76b1c);
+
+        left: 5px;
+      }
+    }
+  }
+  .settings-form-creation{
+    .panel{
+      border-right-width: 0px;
+      .settings-changepwd{
+        a{
+        margin: 0px;
+        border-right-width: 0px;
+      }
+    }
+    .setting-account{
+      a{
+       margin: 0px;
+      
+      }
+    }
+  }
+   .nav-tabs{
+      li {
+        float: right;
+      }
+    }
+    .panel-default{
+      border-color: transparent;
+      margin-top:30px;
+      margin-bottom: 0;      
+      .panel-heading {
+        padding: 0px 0px 0 5px;
+        background-color: $white-color;
+        .nav-tabs {
+         border-bottom: none;
+          li{
+            margin-right: 0;
+            a{
+              &:hover, &:focus {
+                color: $white-color;
+                background-color: $delivered-color;
+                border-color: transparent;
+              }
+            }
+          }
+        }
+        li.active{
+          a{
+            color: $white-color;
+            background-color: $delivered-color;
+            border-color: $table-border-color;
+            border-bottom-color: transparent;
+          }
+        }
+      }
+    }
+  .panel-body {
+    background-color: $table-background-color;
+    .tab-content{
+      margin-top: 25px;
+      margin-bottom: 30px;
+      .user-profile-info{
+        width: 40%;
+        margin: 0 auto;  
+        mat-form-field{
+          display: initial;
+        }                        
+      }
+      input{
+        background-color: transparent;
+        border: none;
+      }
+      .btn-primary{
+        height: 40px;
+        font-size: 16px;
+        width: 120px;
+        margin-bottom: 30px;
+        background-color: transparent;
+        &:hover{
+          background-color: $primary-button-hover-color;
+        }
+        &:active{
+          background-color: $primary-button-hover-color;
+        }
+      }
+      .settings-creation-deactivate{
+        p{
+          color: $anchor-link-color;
+          font-size: 20px;
+        }
+      }
+      .password-set-tab{
+        margin-top: 50px;
+        min-height: 400px;
+        mat-form-field{
+          width: 35%;
+        }
+        .current-password{
+          position:relative;
+        }
+        .fa{
+          margin-right: 10px;
+        }
+        .password-alert{
+          position: absolute;
+          top: 25%;
+          right: 33%;
+          display: flex;
+          color: $sent-color;
+        }
+        .password-alert-error{
+          position: absolute;
+          top: 25%;
+          right: 33%;
+          display: flex;
+          color: $button-border-color;
+        }
+        .btn-required{
+          margin-top: 30px;
+          color: $secondary-color;
+        }
+      }
+    }
+  }
+  #tab2default {
+   text-align: center; 
+  }
+  }
+}
+
+
+
+

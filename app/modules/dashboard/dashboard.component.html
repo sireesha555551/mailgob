@@ -1,0 +1,104 @@
+<div class="main-section">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="main-side-nav">
+        <div id="sidebar-wrapper" class="sidebar-toggle">
+          <ul class="sidebar-nav">
+            <li>
+              <a routerLink="./dashboardhome" [routerLinkActive]="['active']">Dashboard</a>
+            </li>
+            <li>
+              <a routerLink="./mycampaigns" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:
+true}">Campaigns</a>
+            </li>
+           <!--  <li>
+              <a routerLink="./addcontacts">Add Contacts</a>
+            </li> -->
+            <li>
+              <a routerLink="./contacts" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:
+true}">Contacts</a>
+            </li>
+            <li>
+              <a routerLink="./settings" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:
+true}">Settings</a>
+            </li>
+            <!-- <li>
+              <a routerLink="./createtemplate">Create Template</a>
+            </li> -->
+            <!-- <li>
+              <a routerLink="./apiforms" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:
+true}">Api & Forms</a>
+            </li>
+            <li>
+              <a routerLink="./settings" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:
+true}">Settings</a>
+            </li> -->
+            <li>
+              <a routerLink="./help" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:
+true}">Help</a>
+            </li>
+            <!-- <li>
+              <a routerLink="./view" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:
+true}">de-campaign</a>
+            </li> -->
+          </ul>
+        </div> 
+      </div>
+      <div class="main-content">
+        <div class="container-fluid">
+          <router-outlet></router-outlet>
+        </div>
+      </div>
+      <footer class="mailgob-footer">
+        <div class="footer-creation-section">
+          <div class="container-fluid">
+            <div class="footer-content">
+              <div class="row">
+                <div class="col-sm-6">
+                  <h5 class="footer-text">
+                    <a target="_blank" href="https://www.mailgob.com/termsconditions.html">Terms & Conditions | </a>
+                    <a target="_blank" href="https://www.mailgob.com/privacy.html">Privacy Policy |</a>
+                    <a target="_blank" href="https://www.mailgob.com/antispam.html">Anti-Spam</a>
+                  </h5>
+                </div>
+                <div class="col-sm-6">
+                  <div class="copy-rights">
+                    <h5>Copyright © 2016-2018 by MailGob</h5>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+</div>
+<div class="feedback">
+  <a class="feedback-link" (click)="onClickFeedback($event)">Feedback</a>
+</div>
+<div class="backdrop" [ngStyle]="{'display':display}"></div>
+<div class="modal bd-view-stats-model" tabindex="-1" role="dialog"  [ngStyle]="{'display':display}">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <button type="button" class="close" aria-label="Close" (click)="onCloseHandled()"><span aria-hidden="true">&times;</span></button>
+      <div class="modal-header">
+        <h4>Feedbacks</h4>
+      </div>      
+      <div class="modal-body">
+        <div class="form-group">
+          <label for="">Subject</label>
+        <input type="text" class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="">Message</label>
+          <textarea name="" id="" cols="30" class="form-control text-area" rows="6"></textarea>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary pull-right" (click)="onCloseHandled()" >Close</button>
+        <button type="submit" class="btn btn-primary pull-right m-r-1">Submit</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal !-->

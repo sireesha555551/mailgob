@@ -1,0 +1,312 @@
+<div class="help-creation-section row">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="help-creation-content">
+        <h3 class="head-section-title">How can we help?</h3>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="help-creation-icons">
+        <ul class="nav nav-pills mb-3 nav-justified" id="pills-tab" role="tablist">
+          <li class="nav-item text-center active" (click)="onOtherClick($event)">
+            <a class="nav-link help-creation-email active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home"
+              aria-selected="true">
+              <p>
+                <i class="fa fa-envelope fa-3x"></i>
+              </p>Email</a>
+          </li>
+          <li class="nav-item text-center" (click)="onChatClick($event)">
+            <a class="nav-link help-creation-chat" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile"
+              aria-selected="false">
+              <p>
+                <i class="fa fa-comment fa-3x"></i>
+              </p>Chat</a>
+          </li>
+          <li class="nav-item text-center" (click)="onOtherClick($event)">
+            <a class="nav-link help-creation-call" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact"
+              aria-selected="false">
+              <p>
+                <i class="fa fa-phone fa-3x"></i>
+              </p>Call</a>
+          </li>
+          <li class="nav-item text-center" (click)="onOtherClick($event)">
+            <a class="nav-link help-creation-faq" id="pills-faq-tab" data-toggle="pill" href="#pills-faq" role="tab" aria-controls="pills-contact"
+              aria-selected="false">
+              <p>
+                <i class="fa fa-comments fa-3x"></i>
+              </p>Faq</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="help-creation-background-color">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="tab-content" id="pills-tabContent">
+          <div class="tab-pane fade active in" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+            <div class="help-creation-email-form">
+              <form action="" [formGroup]="sendEmailFormGroup" #sendEmailForm="ngForm" (ngSubmit)="onSubmit(sendEmailForm)">
+                <div class="row">
+                  <div class="col-sm-12">
+                    <mat-form-field>
+                      <input matInput placeholder="Subject" formControlName="subject" style="border:none">
+                    </mat-form-field>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-12">
+                    <div class="form-group">
+                      <label for="comment">Message</label>
+                      <textarea class="form-control" rows="5" id="comment" style="height:180px" formControlName="message"></textarea>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-sm-12 text-right">
+                    <div class="help-creation-email-form-button">
+                      <button class="btn btn-primary" type="submit">Send</button>
+                    </div>
+                  </div>
+
+                </div>
+              </form>
+            </div>
+          </div>
+          <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+          </div>
+          <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
+            <div class="help-creation-call-content">
+              <div class="card text-center">
+                <h3>Reach us</h3>
+                <p>Between 9 am to 5 pm(PST)</p>
+                <div class="row">
+                  <div class="col-sm-12">
+                    <h3>833-MAILGOB (6245462)</h3>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="tab-pane fade" id="pills-faq" role="tabpanel" aria-labelledby="pills-faq-tab">
+            <div class="help-creation-faq-content">
+              <ul class="nav nav-pills mb-3 nav-justified" id="pills-tab" role="tablist">
+                <li class="nav-item active">
+                  <a class="nav-link home-creation-faq-account" id="pills-account-tab" data-toggle="pill" href="#pills-account" role="tab"
+                    aria-controls="pills-account" aria-selected="true" style="border-bottom-left-radius: 10px;
+                          border-top-left-radius: 10px;border-right-width:0px;">Account</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link home-creation-faq-billing" id="pills-billing-tab" data-toggle="pill" href="#pills-billing" role="tab"
+                    aria-controls="pills-billing" aria-selected="false">Billing</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link home-creation-faq-privacy" id="pills-privacy-tab" data-toggle="pill" href="#pills-privacy" role="tab"
+                    aria-controls="pills-privacy" aria-selected="false" style="border-bottom-right-radius: 10px;
+                          border-top-right-radius: 10px;border-left-width:0px;background:transparent">Privacy &amp; Security</a>
+                </li>
+              </ul>
+              <div class="tab-content" id="pills-tabContent1">
+                <div class="tab-pane fade show active in" id="pills-account" role="tabpanel" aria-labelledby="pills-account-tab">
+                  <div class="help-creation-faqs-privacy-tabs">
+                    <mat-accordion>
+                      <mat-expansion-panel>
+                        <mat-expansion-panel-header>
+                          <mat-panel-title>
+                            <h5>What Type of Email Lists are Allowed by MailGob?</h5>
+                          </mat-panel-title>
+                        </mat-expansion-panel-header>
+                        <mat-panel-title>
+                          <p>Mailgob allows email lists in the form of Excel files, TXTs and CSVs. These lists are completely
+                            organic and in sync with our intuitive platforms.
+                          </p>
+                        </mat-panel-title>
+                      </mat-expansion-panel>
+                      <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                        <mat-expansion-panel-header>
+                          <mat-panel-title>
+                            <h5>What is the minimum size of the attachment and what format does Mailgob allow?
+                            </h5>
+                          </mat-panel-title>
+                        </mat-expansion-panel-header>
+                        <p>At Mailgob, the minimum attachment size is 5MB. When it comes to the formats, we support CSVs and
+                          XLSXs; thereby simplifying the emailing procedure for our clientele. </p>
+                      </mat-expansion-panel>
+                      <mat-expansion-panel>
+                        <mat-expansion-panel-header>
+                          <mat-panel-title>
+                            <h5>Can i import my contacts from other platforms ?
+                            </h5>
+                          </mat-panel-title>
+                        </mat-expansion-panel-header>
+                        <mat-panel-title>
+                          <p>At present, you cannot import contacts from the existing platforms like gmail and salesforce. However,
+                            MailGob will soon include this feature and our subscribers will be promptly notified.
+                          </p>
+                        </mat-panel-title>
+                      </mat-expansion-panel>
+                      <mat-expansion-panel>
+                        <mat-expansion-panel-header>
+                          <mat-panel-title>
+                            <h5>How can i be informed of new features & news about Mailgob?
+                            </h5>
+                          </mat-panel-title>
+                        </mat-expansion-panel-header>
+                        <mat-panel-title>
+                          <p>You can subscribe to our email newsletter for staying updated regarding the exciting new features
+                            , latest news and all the necessary information. We only send across informative emails to our
+                            subscribers via our non-invasive platform.
+                          </p>
+                        </mat-panel-title>
+                      </mat-expansion-panel>
+                      <mat-expansion-panel>
+                        <mat-expansion-panel-header>
+                          <mat-panel-title>
+                            <h5>What is an acceptable bounce rate ?
+                            </h5>
+                          </mat-panel-title>
+                        </mat-expansion-panel-header>
+                        <mat-panel-title>
+                          <p>A bounce rate that’s lower than 2 percent is considered optimal. However, businesses purchasing
+                            email lists are bound to experience higher bounce rates— somewhere in the ballpark of 5 percent
+                            or more.
+                          </p>
+                        </mat-panel-title>
+                      </mat-expansion-panel>
+                      <mat-expansion-panel>
+                        <mat-expansion-panel-header>
+                          <mat-panel-title>
+                            <h5>Are my email lists shared with anyone else?
+                            </h5>
+                          </mat-panel-title>
+                        </mat-expansion-panel-header>
+                        <mat-panel-title>
+                          <p>We never share the confidential email lists of our clients with anyone else. We believe in safeguarding
+                            customer data and any kind of insightful information.
+                          </p>
+                        </mat-panel-title>
+                      </mat-expansion-panel>
+                      <mat-expansion-panel>
+                        <mat-expansion-panel-header>
+                          <mat-panel-title>
+                            <h5>Are my email lists secure?
+                            </h5>
+                          </mat-panel-title>
+                        </mat-expansion-panel-header>
+                        <mat-panel-title>
+                          <p>We understand that email lists are elusive entities and come with a high resale value. However,
+                            your information at MailGob is highly secured and we never allow the lists to be sold out or
+                            get compromised in any manner.
+                          </p>
+                        </mat-panel-title>
+                      </mat-expansion-panel>
+                      <mat-expansion-panel>
+                        <mat-expansion-panel-header>
+                          <mat-panel-title>
+                            <h5>How difficult it is to use Mailgob?
+                            </h5>
+                          </mat-panel-title>
+                        </mat-expansion-panel-header>
+                        <mat-panel-title>
+                          <p>MailGob’s platform is extremely functional and interactive. The dashboard layout is simple yet
+                            utilitarian and deciphering the email marketing isn’t an issue for the standard user.
+                          </p>
+                        </mat-panel-title>
+                      </mat-expansion-panel>
+                      <mat-expansion-panel>
+                        <mat-expansion-panel-header>
+                          <mat-panel-title>
+                            <h5>Do you supply email list ?
+                            </h5>
+                          </mat-panel-title>
+                        </mat-expansion-panel-header>
+                        <mat-panel-title>
+                          <p>We never supply email lists to the customers and for setting up a campaign they must get their
+                            own list of subscribers. Instead, we consider pushing forth their lists to a wider audience base.
+                          </p>
+                        </mat-panel-title>
+                      </mat-expansion-panel>
+                      <mat-expansion-panel>
+                        <mat-expansion-panel-header>
+                          <mat-panel-title>
+                            <h5>Can you set up my account and email campaign for me ?
+                            </h5>
+                          </mat-panel-title>
+                        </mat-expansion-panel-header>
+                        <mat-panel-title>
+                          <p>We have equipped resources and an insightful team that can set up your account and initiate the
+                            email campaigning endeavors on your behalf. That said, customers need to contact us beforehand
+                            and only then we can start off with the procedures.
+                          </p>
+                        </mat-panel-title>
+                      </mat-expansion-panel>
+                      <mat-expansion-panel>
+                        <mat-expansion-panel-header>
+                          <mat-panel-title>
+                            <h5>Are my email lists shared with anyone else?
+                            </h5>
+                          </mat-panel-title>
+                        </mat-expansion-panel-header>
+                        <mat-panel-title>
+                          <p>We never share the confidential email lists of our clients with anyone else. We believe in safeguarding
+                            customer data and any kind of insightful information.
+                          </p>
+                        </mat-panel-title>
+                      </mat-expansion-panel>
+                      <mat-expansion-panel>
+                        <mat-expansion-panel-header>
+                          <mat-panel-title>
+                            <h5>How many emails can I send ?
+                            </h5>
+                          </mat-panel-title>
+                        </mat-expansion-panel-header>
+                        <mat-panel-title>
+                          <p>While there isn’t a limit to the number of emails which you can send across as a campaign, the
+                            hourly frequency entirely depends on the overall performance. We take the open rates and bounce
+                            rates associated with a campaign under consideration and accordingly determine the number of
+                            emails to be sent across, on a hourly basis.
+                          </p>
+                        </mat-panel-title>
+                      </mat-expansion-panel>
+                      <mat-expansion-panel>
+                        <mat-expansion-panel-header>
+                          <mat-panel-title>
+                            <h5>Can i verify my email list before sending over a campaign ?
+                            </h5>
+                          </mat-panel-title>
+                        </mat-expansion-panel-header>
+                        <mat-panel-title>
+                          <p>Email lists can only be verified if you have opted for our email validation platform i.e. EmailExist.com.
+                            However, the entire process of verification happens at the MailGob platform and individuals need
+                            not visit EmailExist for getting their lists validated.
+                          </p>
+                        </mat-panel-title>
+                      </mat-expansion-panel>
+                      <mat-expansion-panel style="margin-bottom:50px;">
+                        <mat-expansion-panel-header>
+                          <mat-panel-title>
+                            <h5>Do I need a credit card to sign up?
+                            </h5>
+                          </mat-panel-title>
+                        </mat-expansion-panel-header>
+                        <mat-panel-title>
+                          <p>We have simplified proceedings for our customers and therefore credit card information isn’t required
+                            when it comes to signing up for our services and newsletters.
+                          </p>
+                        </mat-panel-title>
+                      </mat-expansion-panel>
+                    </mat-accordion>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

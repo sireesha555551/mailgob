@@ -1,0 +1,152 @@
+@import 'variables';
+@import 'button';
+@import 'table';
+
+.addcontacts-creation-section{
+  .addcontacts-importcontacts-button{
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    .btn-primary{
+      width: 275px;
+      height: 60px;
+    }
+  }
+  .addcontact-description{
+    p {
+      font-size: 20px;
+      width: 60%;
+      margin: 0 auto;
+      margin-top: 16px;
+      text-align: center;
+
+    }
+  }
+  .add-contact-select-section{
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 40px;
+    .add-contact-search-section{
+      margin-bottom: 20px;
+      .addcontact-selectall{
+        // text-align: center;
+        // margin-right: 30px;
+        .checkbox{
+          left: 50px;
+        }
+        span{
+          label{
+            padding-left:10px;
+            margin-top: 5px;
+          } 
+        }
+      }
+      .add-content-delete{
+        .btn-delete{
+          font-size: 18px;
+          height: 35px;
+          width: 100px;
+        }
+      }
+    }
+  }
+  .contacts-list-table{
+    td,th {
+      padding: 8px;
+      font-size: 16px;
+    }
+    .contacts-name {
+      font-size: 20px;
+      text-align: left;
+      .contacts-name-input-span{
+        padding: 10px 20px;
+        align-items: center;
+        justify-content: center;
+        display: inline-flex;
+        input{
+          margin-top: 0;
+        }
+        label{
+          font-size: 16px;
+          margin-bottom: 0;
+          margin-left: 15px;
+          font-weight: 200;
+        }
+        .contact-name-label{
+          font-size: 16px;
+          color: $secondary-color;
+        }
+      }
+    }
+    .table-dropdown{
+      text-align: center;
+    }
+  }
+  .addcontacts-next{
+    margin-top: 40px;
+    text-align: center;
+    .btn{
+      width: 200px;
+      height: 50px;
+    } 
+  }
+}
+.modal-content{
+  padding: 30px;
+  .modal-footer{
+    border-top: none;
+    .btn-secondary{
+      font-size: 16px;
+    }
+  }
+}
+
+.add-contacts-dropzone{
+  min-height: 100px;
+  background-color: transparent;
+  border-radius: 5px;
+  border: 2px dotted $button-second-color;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+// kendo-upload{
+//     input{
+//       font-size: 20px;
+//     }
+//     .k-dropzone{
+//       display: none;
+//     }
+// }
+// kendo-upload-file-list-item-action-button{
+//   font-size: 10px;
+// }
+.bd-view-stats-model{
+  .modal-header{
+    span{
+      display: flex;
+      p{
+        margin-left: 15px;
+      }
+    }
+  }
+  table {
+    border-collapse: collapse;
+    td, th {
+      border: 1px solid $button-second-color;
+      text-align: left;
+      padding: 8px;
+    }
+  }
+}
+
+.backdrop{ 
+  background-color:rgba(0,0,0,0.6);
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100vh;
+}
+

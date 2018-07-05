@@ -1,0 +1,258 @@
+@import 'variables';
+@import 'common';
+@import 'button';
+.help-creation-section{
+  overflow: hidden;
+    .help-creation-content{
+      padding: 0px 25px;
+      position: relative;
+    } 
+    .help-creation-icons{
+      position: absolute;
+      top: 0px;
+      left: 0px;
+      z-index: 20;
+      .nav-pills{
+        width:68%;
+        margin: 0 auto;
+      
+      }
+      .nav-item{
+        padding:22px;
+        a{
+          padding-top: 25px;
+          color: $table-background-color;
+          font-size: 20px;
+          &:hover{
+            transform: scale(1.0);
+            box-shadow: 0 0 0px rgba(0, 0, 0, 0.5);
+          }
+          @include largeScreen{
+            font-size: 30px;
+            height: 240px;
+            width: 250px;
+           }
+           @include tablet{
+             font-size:26px;
+            //  padding: px;
+           }
+           @include retina{
+             font-size:18px;
+            //  padding: 40px;
+           }
+        }
+
+      }
+      .nav-item.active{
+        a{
+          transform: scale(1.1);
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+        .help-creation-email{
+          background-color: $help-color-one;
+        }
+        .help-creation-chat{
+          background-color: $delivered-color;
+        }
+        .help-creation-call{
+          background-color: $help-color-two;
+        }
+        .help-creation-faq{
+          background-color: $sent-color;
+        }
+      }
+
+      .nav-link{
+        min-width: 150px;
+        min-height: 150px;
+      }
+      .help-creation-email{
+        background-color: $help-color-one;
+        p{
+          padding-top: 10px;
+          padding-bottom: 8px;
+          i{
+            color: $table-background-color;
+          }
+        }
+      }
+      .help-creation-chat{
+        background-color: $delivered-color;
+        p{
+          padding-top: 10px;
+          padding-bottom: 8px;
+          i{
+            color: $table-background-color;
+          }
+        }
+      }
+      .help-creation-call{
+        background-color: $help-color-two;
+        p{
+          padding-top: 10px;
+          padding-bottom: 8px;
+          i{
+            color: $table-background-color;
+          }
+        }
+      }
+      .help-creation-faq{
+        background-color: $sent-color;
+        p{
+          padding-top: 10px;
+          padding-bottom: 8px;
+          i{
+            color: $table-background-color;
+          }
+        }
+      }
+    }
+
+
+      .help-creation-background-color{
+        background-color: $table-background-color;
+        min-height:510px;
+        padding-top:9%;
+        margin-top:10%;
+        @include largeScreen{
+         min-height:950px;
+        }
+        @include tablet{
+          min-height:950px;
+        }
+        @include retina{
+          min-height:950px;
+        }
+          .tab-content{
+            // padding: 25px;
+            #pills-home{
+               background-color: #ffffff;
+                width:60%;
+                margin: 0 auto;
+                border-radius:10px; 
+                min-height: 350px;
+                border: solid 1px #dddddd;
+              .help-creation-email-form{
+                width:65%;
+                margin: 0 auto;
+                padding-top: 15px;
+                ::ng-deep mat-form-field{
+                  display: initial;
+                }
+                .help-creation-comment{
+                  padding: 10px;
+                }
+                label{
+                  font-weight: normal;
+                  color: grey;
+                }
+                textarea{
+                  resize: none !important;
+                }
+                .help-creation-email-form-button{
+                  .btn-primary{
+                    width: 150px;
+                    height: 40px;
+                    background-color: transparent;
+                    &:active, &:focus, &:hover, &:visited {
+                      background-color: $primary-button-hover-color;
+                      border: 1px solid $button-border-color;
+                      color: $white-color;  
+                    }
+                  }
+                }
+                @include tablet{
+                  margin-top: 5%;
+                }
+              }
+            }
+            
+            .help-creation-call-content{
+              width:50%;
+              margin: 0 auto;
+              .card{
+                border: solid 1px $table-border-color;
+                padding: 20px 20px 30px 20px;
+                margin-bottom: 50px;
+                background-color: $white-color;
+                padding: 25px;
+                border-radius: 10px;
+                height: 200px;
+              }
+            }
+            .help-creation-faq-content{
+              width:59%;
+              margin: 0 auto;
+            }
+
+              .home-creation-faq-account{
+                height: 50px;
+                border: solid 1px #979797;
+                border-bottom-left-radius: 10px;
+                border-top-left-radius: 10px;
+                text-align: center;
+                font-size: 18px;
+                color: $white-color;
+                background-color: $sidenav-color;
+                border-bottom-left-radius: 10px;
+                border-top-left-radius: 10px;
+                border-bottom-right-radius: 0px;
+                border-top-right-radius: 0px;
+                    
+              }
+
+              .home-creation-faq-billing{
+               
+                height: 50px;
+                border: solid 1px #979797;
+                text-align: center;
+                font-size: 18px;
+                color: #000000;
+                background-color: $table-background-color;
+                border-bottom-left-radius: 0px;
+                border-top-left-radius: 0px;
+                border-bottom-right-radius: 0px;
+                border-top-right-radius: 0px;
+              }
+              .home-creation-faq-privacy{
+              
+                height: 50px;
+                border: solid 1px #979797;
+                border-bottom-right-radius: 10px;
+                border-top-right-radius: 10px;
+                text-align: center;
+                font-size: 18px;
+                color: $secondary-color;
+                border-bottom-right-radius: 10px;
+                border-top-right-radius: 10px;
+                border-bottom-left-radius: 0px;
+                border-top-left-radius: 0px;
+              }
+
+                     
+                    
+                
+            .help-creation-faqs-privacy-tabs{
+              width:100%;
+              mat-expansion-panel{
+                width: 100%;
+                border-radius: 10px;
+                margin-top:10px;
+                background-color:#f9f9f9;
+              }
+              mat-expansion-panel-header{
+                width: 100%;
+                background-color: #f9f9f9;
+                border-radius: 10px;
+                  mat-panel-title{
+                    background-color: #f9f9f9;
+                    h5{
+                      font-weight: bold;
+                    }
+                 }
+              }
+            }
+        }
+      }
+    }
+            
